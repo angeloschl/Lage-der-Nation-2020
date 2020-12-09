@@ -163,7 +163,6 @@ df <- as_tibble(df)
 gsub(df$Shownotes[2], pattern=".*(<li><ul>\\..*?\\</li></ul>).*", replace="\\1")
 
 
-
 scraplinks <- function(url){
   # Create an html document from the url
   webpage <- xml2::read_html(url)
@@ -186,13 +185,6 @@ LDN_Link <- scraplinks(url)
 
 
 
-library(stringr)
-
-url_pattern <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
-
-str_extract(df$Shownotes[2], url_pattern)
-
-data
 
 
 library(tidytext)
@@ -204,8 +196,10 @@ a = df %>%
   unnest_tokens(word,Shownotes)
 
 a %>% 
-  filter(str_detect(word, ".")) %>% 
+  filter(str_detect(word, "[:alpha:]\\.")) %>% 
+  filter(str_detect(word, "www",negate = TRUE)) %>%
+  filter(str_detect(word, "[:alpha:]+\\.[:alpha:]+\\.",negate = TRUE)) %>%
   view()
 
-grepl(".",a$word)
+
 
