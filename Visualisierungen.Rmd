@@ -1,0 +1,543 @@
+---
+title: "Lage Der Nation - 2020"
+author: "Angelo Schleussner"
+date: "2.12.2020"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r include=FALSE}
+library(tidyverse)
+library(lubridate)
+library(methods)
+library(here)
+library(tidymetrics)
+library(ggtext)
+library(ggtext) 
+library(extrafont)
+library(showtext)
+library(glue)
+```
+
+
+```{r include=FALSE}
+rm(list = ls())  #Loescht alle Vorherigen Variablen und Daten aus R
+LDN_df <- read_csv(here("data/LDN_Datensatz.csv")) 
+
+Farbe_LND_1 = "#333399" # Blau
+Farbe_LND_2 = "#cccc66" # Gelb
+Farbe_LND_3 = "#993333" # Rot
+Farbe_LND_4 = "#4d3399"
+
+# %in% umkerehn. Filtert was danach kommt heraus.
+`%notin%` <- Negate(`%in%`)
+
+```
+
+
+```{r include=FALSE}
+LDN_df2 <- LDN_df %>% 
+  #Zeitvariablen anpassen. Von charater in Date oder duration
+    mutate(
+    date = date(dmy_hms(pubDate)),
+    Uhrzeit = format(dmy_hms(pubDate), format = "%H:%M:%S"),
+    Kapitel_Start = round(hms(Kapitel_Start)),
+    duration = as.duration(hms(duration)),
+    day_week = wday(date, label = TRUE, week_start = 1,locale = Sys.setlocale("LC_TIME", "de_DE.UTF-8")) )%>% 
+  print()
+
+
+  #Länge der Kapitelberechnen Und Folgen Art bestimmen Normale Lage oder ein Speziel
+LDN_df3 <- LDN_df2 %>% 
+  group_by(title) %>% 
+  mutate(Kapitel_Start = as.duration(Kapitel_Start),
+         Kapitel_Zähler = 1:n(),
+         Kapitel_länge = ifelse(Kapitel_Zähler==max(Kapitel_Zähler),last(duration) - Kapitel_Start,lead(Kapitel_Start,1) - Kapitel_Start),
+         Kapitel_länge = as.duration(Kapitel_länge), 
+         Kapitel_Titel = ifelse(str_detect(title,"Sommerinterview"),"Sommerinterview",Kapitel_Titel),
+         Kapitel_Titel = ifelse(str_detect(title,"Spezial:"),"Spezial",Kapitel_Titel),
+         Folge_Art = ifelse(str_detect(title,"Sommerinterview | Spezial:"),"Spezial","Folge")) %>%
+  ungroup() %>% 
+  select(-Kapitel_Zähler) 
+
+
+LDN <- LDN_df3 %>% 
+  select(-link, -pubDate, everything()) 
+
+```
+
+
+```{r include=FALSE}
+Anzahl_Veröffentlich_2020 <- LDN %>%
+  filter(date >= "2020-01-01") %>%
+  group_by(title) %>% 
+  summarize() %>% 
+  summarize(title = n()) 
+
+Anzahl_Veröffentlich_2019 <- LDN %>%
+  filter(date >= "2019-01-01",
+         date <= "2020-01-01") %>%
+  group_by(title) %>% 
+  summarize() %>% 
+  summarize(title = n()) 
+
+Anzahl_Folge <- LDN %>%
+  filter(date >= "2020-01-01",
+         Folge_Art == "Folge") %>%
+  group_by(title) %>% 
+  summarize() %>% 
+  summarize(title = n()) 
+
+Anzahl_Spezial <- LDN %>%
+  filter(date >= "2020-01-01",
+         Folge_Art == "Spezial") %>%
+  group_by(title) %>% 
+  summarize() %>% 
+  summarize(title = n())
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig1, fig.height = 3, fig.width = 8}
+LDN_Jahr <- LDN %>%
+  cross_by_periods(periods = c("day", "week", "month", "quarter", "year")) %>% 
+  filter(date >= "2020-01-01",
+         period == "year") %>%
+  group_by(title, Folge_Art,period,date,duration) %>% 
+  summarize() %>% 
+  ungroup() %>% 
+  group_by(title, Folge_Art,period,date,duration) %>%
+  count(Folge_Art,sort = TRUE) 
+
+
+GesamtLänge = LDN_Jahr %>% 
+  group_by(duration) %>% 
+  summarize(duration = sum(duration)) %>% 
+  summarize(duration = sum(duration)) %>% 
+  mutate(duration = round(seconds_to_period(duration))) %>% 
+  mutate(GesamtLänge = sprintf('%2dd %2dh %02dmin',day(duration), hour(duration),minute(duration))) 
+
+LDN_Jahr %>% 
+  ggplot(aes(date,n,fill = factor(Folge_Art, levels = c("Spezial","Folge"))))+
+  geom_col()+
+  theme(legend.position = "none")+
+  scale_fill_manual(values = c("#993333","#333399"))+
+  scale_x_date(date_labels = "%Y",
+               date_breaks = "1 years") +
+  coord_flip()+
+  labs(
+    title = "Anzahl der Folgen in 2020",
+       subtitle = 
+        paste(Anzahl_Veröffentlich_2020 , "Folgen,", Anzahl_Folge, "<b style='color:#333399'>reguläre</b> &",Anzahl_Spezial, "<b style='color:#993333'>Spezial</b>-Folgen.  \n",
+              "Gesmatlänge aller Folgen:",GesamtLänge$GesamtLänge),
+       x = "",
+       y = "")+ 
+  theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "#EBEBEB"),
+    plot.background = element_rect(fill = "#EBEBEB"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.line.y.left = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks = element_line(color = "#e0e0e0"),
+    text = element_text(family = "Futura-Bold"),
+    plot.title = element_text(size = 22),
+    plot.title.position = "plot",    
+    plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"),
+    axis.line = element_line(color = "#e0e0e0")) +
+    scale_y_continuous(limits = c(0,47), expand = c(0,NA))+
+  theme(
+    plot.title = element_markdown(lineheight = 1.1),
+    plot.subtitle = element_markdown(lineheight = 1.1))
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig.height = 3, fig.width = 8}
+LDN_LängeDurschnitt <- LDN %>%
+  filter(date >= "2020-01-01") %>%
+  group_by(title, duration, date,Folge_Art) %>% 
+  summarize() %>% 
+  ungroup() %>% 
+  summarize(Durchschnitt = mean(duration),
+            Minimum = min(duration),
+            Maximum = max(duration)) %>%   
+  # Durschnittslänge der Folgen
+  mutate(Durchschnitt = round(seconds_to_period(Durchschnitt))) %>% 
+  mutate(meanStundenMinuten = sprintf('%2d:%02d', hour(Durchschnitt),minute(Durchschnitt)),
+         meanStunden = sprintf('%2d', hour(Durchschnitt)),
+         meanMinuten = sprintf('%2d', minute(Durchschnitt))) %>% 
+  # Kürzeste Folge
+  mutate(Minimum = round(seconds_to_period(Minimum))) %>% 
+  mutate(minStundenMinuten = sprintf('%2d:%02d', hour(Minimum),minute(Minimum)),
+         minStunden = sprintf('%2d', hour(Minimum)),
+         minMinuten = sprintf('%2d', minute(Minimum))) %>% 
+  # Längste Folge
+  mutate(Maximum = round(seconds_to_period(Maximum))) %>% 
+  mutate(maxStundenMinuten = sprintf('%2d:%02d', hour(Maximum),minute(Maximum)),
+         maxStunden = sprintf('%2d', hour(Maximum)),
+         maxMinuten = sprintf('%2d', minute(Maximum))) 
+
+
+
+
+LDN %>%
+  filter(date >= "2020-01-01") %>%
+  group_by(title, duration, date,Folge_Art) %>% 
+  summarize() %>% 
+  ungroup() %>% 
+  ggplot(aes(duration,y = ""))+
+  geom_violin(color = "black" ,fill = "#333399")+
+  scale_x_time(breaks=c(0,1800,3600,5400,7200,9000),
+               labels=c("0:00","0:30","1:00","1:30","2:00","2:30"),
+               limits = c(0,7500), 
+               expand = c(0,NA))+
+  
+  labs(
+    title = "Länge der Folgen in 2020",
+    subtitle = paste("Im **Mittel** waren die Folgen",str_trim(LDN_LängeDurschnitt$meanStundenMinuten),"Stunde lang.  \n Die **kürzestes** Folge war",LDN_LängeDurschnitt$minMinuten,"Minuten (LdN198), die **Längste**",LDN_LängeDurschnitt$maxStundenMinuten,"Stunden lang (LdN172)."),
+       x = "",
+       y = "")+
+  theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "#EBEBEB"),
+    plot.background = element_rect(fill = "#EBEBEB"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.line.y.left = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks = element_line(color = "#e0e0e0"),
+    text = element_text(family = "Futura-Bold"),
+    plot.title = element_text(size = 22),
+    plot.title.position = "plot",    
+    plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"),
+    axis.line = element_line(color = "#e0e0e0"))+
+  theme(
+    plot.title = element_markdown(lineheight = 1.1),
+    plot.subtitle = element_markdown(lineheight = 1.1))
+
+#font_add("LemonMilk",regular = "LemonMilk.otf",bold = "LemonMilkbold.otf",italic = "LemonMilkitalic.otf", bolditalic = "LemonMilkbolditalic.otf")
+#font_add("Futura2",regular = "futura light bt.ttf",bold = "Futura Bold font.ttf",italic = "Futura Light Italic font.ttf", bolditalic = "Futura Heavy Italic font.ttf")
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+LDN_Kapitel <- LDN %>% 
+  as_tibble() %>% 
+  mutate(Kapitel_Titel = str_replace(Kapitel_Titel,":.*", ""),
+         Kapitel_Titel = str_replace(Kapitel_Titel,"-.*", "")) %>% 
+  group_by(title,Kapitel_Titel,duration,date) %>% 
+  summarize(Kapitel_länge = sum(Kapitel_länge),
+            Kapitel_länge = as.duration(Kapitel_länge)) %>% 
+  ungroup() %>% 
+  mutate(Kapitel_Titel = ifelse(Kapitel_Titel == "Corana","Corona",Kapitel_Titel),
+         Kapitel_Titel = as_factor(Kapitel_Titel)) %>% 
+  arrange(desc(date))
+
+
+LDN_Kapitel %>% 
+  filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview")) %>% 
+  filter(date >= "2020-01-01") %>%
+  count(Kapitel_Titel,sort = TRUE) %>% 
+  head(10) %>% 
+  mutate(Kapitel_Titel = glue::glue("{ Kapitel_Titel } (n={n})"),
+         Kapitel_Titel = reorder(Kapitel_Titel,n)) %>% 
+  ggplot(aes(Kapitel_Titel,n))+
+  geom_col(fill = Farbe_LND_1)+
+  coord_flip()+
+  scale_y_continuous(limits = c(0,32), expand = c(0,NA))+
+  
+    labs(
+    title = "Top 10 Kapitel 2020 - Häufigkeit",
+       subtitle = 
+        paste("Wie oft kam ein Kapitel in den Folgen vor"),
+    caption = "*Ohne Spezial-Folgen",
+       x = "",
+       y = "")+ 
+  theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "#EBEBEB"),
+    plot.background = element_rect(fill = "#EBEBEB"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.line.y.left = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks = element_line(color = "#e0e0e0"),
+    axis.line = element_line(color = "#e0e0e0"),
+    text = element_text(family = "Futura-Bold"),
+    plot.title = element_text(size = 22),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"))+
+  theme(
+    plot.title = element_markdown(lineheight = 1.1),
+    plot.subtitle = element_markdown(lineheight = 1.1))
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+LDN_Kapitel %>%   
+  filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview")) %>% 
+  filter(date >= "2020-01-01") %>%
+  group_by(Kapitel_Titel) %>% 
+  summarize(Kapitel_länge = sum(Kapitel_länge)) %>% 
+  arrange(desc(Kapitel_länge)) %>% 
+  mutate(LängeHM = round(seconds_to_period(Kapitel_länge)),
+         LängeHM = str_remove(sprintf('%2d:%02d', hour(LängeHM),minute(LängeHM))," "),
+         Kapitel_Titel = glue::glue("{ Kapitel_Titel } ({LängeHM})"),
+         Kapitel_Titel = fct_reorder(Kapitel_Titel,Kapitel_länge)) %>% 
+  ungroup() %>% 
+  head(10) %>% 
+  ggplot(aes(Kapitel_Titel,Kapitel_länge))+
+  geom_col(fill = Farbe_LND_1)+
+  scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800),
+               labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00"),
+               limits = c(0,48000), 
+               expand = c(0,NA))+
+  coord_flip()+
+  
+    labs(
+    title = "Top 10 Kapitel 2020 - Länge",
+       subtitle = 
+        paste("Über welche Theme wurde am längsten gesprochen - in Stunden (ohne Spezial)."),
+    caption = "*Ohne Spezial-Folgen",
+       x = "",
+       y = "")+ 
+  theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "#EBEBEB"),
+    plot.background = element_rect(fill = "#EBEBEB"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.line.y.left = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks = element_line(color = "#e0e0e0"),
+    axis.line = element_line(color = "#e0e0e0"),
+    text = element_text(family = "Futura-Bold"),
+    plot.title = element_text(size = 22),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"))+
+  theme(
+    plot.title = element_markdown(lineheight = 1.1),
+    plot.subtitle = element_markdown(lineheight = 1.1))
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+
+
+LDN_Interview <- LDN %>% 
+  filter(date >= "2019-01-01") %>%
+  filter(str_detect(Kapitel_Titel, "Interview")) %>% 
+  filter(str_detect(Kapitel_Titel, "Feedback:",negate = TRUE)) %>%
+  filter(str_detect(Kapitel_Titel, "Hinweis",negate = TRUE)) %>%
+  filter(str_detect(Kapitel_Titel, "Hineweis",negate = TRUE)) %>%
+  filter(str_detect(Kapitel_Titel, "Progammhinweis:",negate = TRUE)) %>%
+  filter(str_detect(Kapitel_Titel, "Medienradio:",negate = TRUE)) %>% 
+  mutate(Interview = 1,
+         InterviewWeiblich = 0,
+         InterviewMännlich = 0)
+
+# Achtung fehler- LdN217 Zwei Interviewer. 
+Frauen = c("Claudia Kemfert","Katharina Nocun","Svenja Schulze","Saskia Esken","Katharin Tai","Luisa Neubauer","Monika Börding")
+
+Männer = c("Michael Georg Link","Norbert Röttgen","Gerhard Schick","Ronen Steinke","Stefan Brink","Karl Lauterbach","Stephan Hobe","Achim Truger","Christian Mihr","Gerhard Knaus","Nils Melzer","Sven-Christian Kindler","Bijan Moini","Alexander Graf Lambsdorff","Wilfried Jilge","Armin Himmelrath","Oliver Meier","Boris Burghardt","Gerhard Schick","Christoph Möllers","Hannes Mosler","Wolfgang Seibel","Hannes Grassegger")
+
+# "Norbert Walter-Borjans" in LdN 217
+
+
+for (i in 1:length(Frauen)) {
+  a = str_detect(LDN_Interview$Kapitel_Titel, Frauen[i])
+  b = which(a == TRUE)
+  LDN_Interview$InterviewWeiblich[b] = 1
+  }
+
+for (i in 1:length(Männer)) {
+  a = str_detect(LDN_Interview$Kapitel_Titel, Männer[i])
+  b = which(a == TRUE)
+  LDN_Interview$InterviewMännlich[b] = 2
+  }
+
+LDN_Interview <- LDN_Interview %>% 
+  mutate(InterviewWeiblich = as.numeric(InterviewWeiblich),
+         InterviewMännlich = as.numeric(InterviewMännlich),
+         Interview = as.numeric(Interview))
+
+
+LDN_Interview <- left_join(LDN,LDN_Interview) 
+
+
+
+
+Fr <-  as.tibble(Frauen) %>%
+  mutate(Geschlecht = 1) %>%
+  rename(Name = value)
+  
+Mä <-  as.tibble(Männer) %>%
+  mutate(Geschlecht = 2) %>%
+  rename(Name = value)
+
+LDN_Intervew_Geschlecht <- rbind(Fr,Mä)
+
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig.height = 3, fig.width = 8}
+
+LDN_InterviewPartner <- LDN_Interview %>% 
+  filter(Interview == 1,
+         title != "LdN217 Amokfahrt in Trier, Corona, Rundfunkbeitrag, Subventionen für Presse-Verlage, Interview Saskia Esken und Norbert Walter-Borjans") %>% 
+  mutate(InterviewGeschlecht = as.numeric(InterviewWeiblich) + as.numeric(InterviewMännlich)) 
+
+
+
+AnzahlInterviewPartner <- LDN_InterviewPartner %>%
+  summarize(InterviewWeiblich = sum(InterviewWeiblich),
+            InterviewMännlich = sum(InterviewMännlich/2),
+            InterviewAnzahl = sum(Interview)) %>% 
+ mutate(InterviewParnter = InterviewWeiblich + InterviewMännlich)
+
+LDN_Interview %>% 
+  filter(Interview == 1) %>% 
+    filter(Interview == 1,
+         title != "LdN217 Amokfahrt in Trier, Corona, Rundfunkbeitrag, Subventionen für Presse-Verlage, Interview Saskia Esken und Norbert Walter-Borjans") %>% # Kein wikliches Interview in LdN217 eher verweis aus Spezial Folge
+  mutate(InterviewGeschlecht = as.numeric(InterviewWeiblich) + as.numeric(InterviewMännlich)) %>% 
+  group_by(InterviewGeschlecht) %>% 
+  summarize(InterviewGeschlecht = n()) %>% 
+  arrange(desc(InterviewGeschlecht)) %>% 
+  ggplot(aes(InterviewGeschlecht, y="",fill = InterviewGeschlecht))+
+  geom_col(fill= c("#333399","#993333"))+
+  
+  labs(
+    title = "Interviewgäste in 2020",
+       subtitle = 
+        paste("Es gab",AnzahlInterviewPartner$InterviewAnzahl , "Folgen mit Interviewgästen.  \n", length(Männer), "<b style='color:#333399'>männliche</b> und",length(Frauen), "<b style='color:#993333'>weibliche</b> Gäste."),
+    caption = "*Ohne Spezial-Folgen **Ohne LdN217 da kein Interview",
+       x = "",
+       y = "")+
+  theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "#EBEBEB"),
+    plot.background = element_rect(fill = "#EBEBEB"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.line.y.left = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks = element_line(color = "#e0e0e0"),
+    text = element_text(family = "Futura-Bold"),
+    plot.title = element_text(size = 22),
+    plot.title.position = "plot",    
+    plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"),
+    axis.line = element_line(color = "#e0e0e0"))+
+  theme(
+    plot.title = element_markdown(lineheight = 1.1),
+    plot.subtitle = element_markdown(lineheight = 1.1))
+
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+my.max <- function(x) ifelse( !all(is.na(x)), max(x, na.rm=T), 0)
+
+LDN_Interview %>%
+  filter(date >= "2020-01-01") %>%
+  group_by(title) %>% 
+  summarise(Interview = my.max(as.numeric(Interview)),
+            day_week = last(day_week),
+            Folge_Art = last(Folge_Art),
+            date = last(date),
+            anzahl = 1)%>% 
+  ungroup() %>% 
+  group_by(day_week) %>% 
+  summarize(anzahl = n()) %>% 
+  mutate(day_week = as.factor(day_week),
+         day_week2 = fct_reorder(glue("{ day_week } (n={anzahl})"),as.numeric(day_week))) %>% 
+
+
+  ggplot(aes(day_week2,anzahl)) +
+  geom_col(fill = Farbe_LND_1) +
+
+  labs(
+    title = "Folgen pro Wochentag in 2020",
+       subtitle = 
+        paste("Freitag ist Lage Tag"),
+       x = "",
+       y = "")+
+  theme(legend.position = "none",
+        panel.background = element_rect(fill = "#EBEBEB"),
+        plot.background = element_rect(fill = "#EBEBEB"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_line(color = "#e0e0e0"),
+        plot.title = element_text(size=22),
+        plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"),
+        text = element_text(family = "Futura-Bold"),
+        axis.line = element_line(color = "#e0e0e0"))+
+  theme(plot.title = element_markdown(lineheight = 1.1),
+        plot.subtitle = element_markdown(lineheight = 1.1))
+  
+```
+
+
+
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, include=FALSE, paged.print=FALSE}
+
+LDN_Jahre <- LDN %>%
+  cross_by_periods(periods = c("day", "week", "month", "quarter", "year")) %>% 
+  filter(date >= "2019-01-01",
+         period == "year") %>%
+  group_by(title, Folge_Art,period,date) %>% 
+  summarize() %>% 
+  ungroup() %>% 
+  group_by(title, Folge_Art,period,date) %>%
+  count(Folge_Art,sort = TRUE) 
+
+LDN_Jahre %>% 
+  ggplot(aes(date,n,fill = factor(Folge_Art, levels = c("Spezial","Folge"))))+
+  geom_col()+
+  theme(legend.position = "none")+
+  scale_fill_manual(values = c("#993333","#333399"))+
+  scale_x_date(date_labels = "%Y",
+               date_breaks = "1 years") +
+  coord_flip()+
+  labs(
+    title = "Anzahl der Folgen in 2020",
+       subtitle = 
+        paste("Es gab",Anzahl_Veröffentlich_2020 , "Folgen - ", Anzahl_Folge, "<b style='color:#333399'>reguläre</b> &",Anzahl_Spezial, "<b style='color:#993333'>Spezial</b>-Folgen. \n"),
+       x = "",
+       y = "")+ 
+  theme(legend.position = "none",
+        panel.background = element_rect(fill = "#EBEBEB"),
+        plot.background = element_rect(fill = "#EBEBEB"),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_line(color = "#e0e0e0"),
+        plot.title = element_text(size=22),
+        plot.subtitle = element_text(size=11),
+        text = element_text(family = "Futura-Bold"),
+        plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"),
+        axis.line = element_line(color = "#e0e0e0"))+
+  theme(plot.title = element_markdown(lineheight = 1.1),
+        plot.subtitle = element_markdown(lineheight = 1.1))
+
+```
+
+
+
