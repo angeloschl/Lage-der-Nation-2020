@@ -139,7 +139,7 @@ LDN_df_angepasst %>%
 
 
 
-# Sichern neuen Datensatzes -----------------------------------------------
+# Sichern des neuen Datensatzes -----------------------------------------------
 
 
 write.csv(LDN_df_angepasst,here("data/LDN_Datensatz.csv"),
@@ -147,36 +147,52 @@ write.csv(LDN_df_angepasst,here("data/LDN_Datensatz.csv"),
 
 
 
-# XML Testen --------------------------------------------------------------
+# Quellenangaben aus XML lesen und aufbereiten --------------------------------------------------------------
 
-
+# Einzelne daten aus XML lesen
 Shownotes <- xpathApply(LDN_xml,"//channel/item/content:encoded",xmlValue)
 title <- xpathApply(LDN_xml,"//channel/item/title",xmlValue)
 
-df <- data.frame(cbind(title,Shownotes))
-df$Shownotes[1]
+# Tibble / Data Frame erstellen
+LDN_xml_df <- data.frame(cbind(title,Shownotes))
 
 
-df <- as_tibble(df) %>% 
+LDN_xml_df <- as_tibble(LDN_xml_df) %>% 
   mutate(title = as.character(title))
 
 
-b = df %>% 
-#  filter(title =="LdN217 Amokfahrt in Trier, Corona, Rundfunkbeitrag, Subventionen für Presse-Verlage, Interview Saskia Esken und Norbert Walter-Borjans") %>% 
+LDN_Full <- left_join(LDN_df_angepasst,LDN_xml_df, by = "title")
+
+LDN_Full%>% 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, " ", ""))
+
+write.csv(LDN_Full,here("data/LDN_Datensatz.csv"),
+          row.names = F)
+
+
+
+
+
+b = LDN_xml_df %>% 
+  filter(title >="LdN171 USA töten iranischen General (Interview Alexander Graf Lambsdorff), “Umweltsau”, Leipziger Silvesternacht, Politik gegen Steuertricks, Brände in Australien, Hacker-Kongress 36C3") %>% 
   group_by(title) %>% 
+  mutate(Shownotes =  paste(unlist(Shownotes), collapse=' ')) %>%  # xxx
   mutate(Shownotes =  str_replace_all(string = Shownotes, "<|>|/", " ")) %>% 
   mutate(Shownotes =  gsub(pattern = "Verabschiedung.*","",Shownotes)) %>% 
-  mutate(Shownotes =  str_extract_all(Shownotes,"\\s\\s\\((.*?)\\)")) %>% 
-  mutate(Shownotes =  paste(unlist(Shownotes), collapse=' ')) %>% 
+  mutate(Shownotes =  str_extract_all(Shownotes,"\\s\\s\\((.*?)\\)")) %>% # Quellen die Hinter dem Link in Klammernstehen extrahieren
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "c\\(\"*", "")) %>% # xxx
+#  mutate(Shownotes =  paste(unlist(Shownotes), collapse=' ')) %>% 
   mutate(Shownotes =  str_replace_all(string = Shownotes, " ", "")) %>% 
   mutate(Shownotes =  str_replace_all(string = Shownotes, ";|,|https:|app.", "")) %>% 
   mutate(Shownotes =  str_replace_all(string = Shownotes, "&#8211", "")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "[\r\n]" , "")) %>% # Absätze entfernen 
   
+  #Unterschiedlich benannte, aber gleiche Quellen umbenennen. 
   mutate(Shownotes =  str_replace_all(string = Shownotes, "SüddeutscheZeitung", "Süddeutsche")) %>%
   mutate(Shownotes =  str_replace_all(string = Shownotes, "süddeutsche.de", "Süddeutsche")) %>%
-  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSüddeutsche.de\\b", "Süddeutsche")) %>%
-  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSüddeutsche.de\\b", "Süddeutsche")) %>%
   mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSZ\\b", "Süddeutsche")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bsz.de\\b", "Süddeutsche")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSüddeutsche.de\\b", "Süddeutsche")) %>%
   
   mutate(Shownotes =  str_replace_all(string = Shownotes, "spiegel.de", "SpiegelOnline")) %>%
   mutate(Shownotes =  str_replace_all(string = Shownotes, "SPON", "SpiegelOnline")) %>%
@@ -207,9 +223,28 @@ b = df %>%
   mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bZeitonline\\b", "ZEITONLINE")) %>%
   mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bzeitonline\\b", "ZEITONLINE")) %>%
   
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bhandelsblatt.com\\b", "Handelsblatt")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bhbhandelsblatt.com\\b", "Handelsblatt")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bclick.redaktion.Handelsblatt\\b", "Handelsblatt")) %>%
   
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\byoutube.com\\b", "YouTube")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\btaz.de\\b", "TAZ")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bZDFheute\\b", "ZDF")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bzdf.de\\b", "ZDF")) %>%
 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\brki.de\\b", "RKI")) %>%
+
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bheise.de\\b", "Heise")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bheiseonline\\b", "Heise")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bHeiseMagazine\\b", "Heise")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bWELT\\b", "DIEWELT")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bwelt.de\\b", "DIEWELT")) %>%
   ungroup()
+
 
 c = b %>%
   unnest_tokens(word,Shownotes,to_lower = F) 
