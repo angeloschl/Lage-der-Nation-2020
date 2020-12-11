@@ -166,14 +166,15 @@ LDN_Full <- left_join(LDN_df_angepasst,LDN_xml_df, by = "title")
 LDN_Full%>% 
   mutate(Shownotes =  str_replace_all(string = Shownotes, " ", ""))
 
-write.csv(LDN_Full,here("data/LDN_Datensatz.csv"),
+write.csv(LDN_Full,here("data/LDN_Datensatz_mit_Quelle.csv"),
           row.names = F)
 
 
 
 
 
-b = LDN_xml_df %>% 
+#b = LDN_xml_df %>% 
+b = LDN_Full %>% 
   filter(title >="LdN171 USA töten iranischen General (Interview Alexander Graf Lambsdorff), “Umweltsau”, Leipziger Silvesternacht, Politik gegen Steuertricks, Brände in Australien, Hacker-Kongress 36C3") %>% 
   group_by(title) %>% 
   mutate(Shownotes =  paste(unlist(Shownotes), collapse=' ')) %>%  # xxx
