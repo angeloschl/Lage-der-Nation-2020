@@ -153,7 +153,7 @@ LDN_Jahr %>%
     plot.title.position = "plot",    
     plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"),
     axis.line = element_line(color = "#e0e0e0")) +
-    scale_y_continuous(limits = c(0,47), expand = c(0,NA))+
+    scale_y_continuous(limits = c(0,52), expand = c(0,NA))+
   theme(
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
@@ -254,7 +254,7 @@ LDN_Kapitel %>%
   ggplot(aes(Kapitel_Titel,n))+
   geom_col(fill = Farbe_LND_1)+
   coord_flip()+
-  scale_y_continuous(limits = c(0,32), expand = c(0,NA))+
+  scale_y_continuous(limits = c(0,34), expand = c(0,NA))+
   
     labs(
     title = "Top 10 Kapitel 2020 - Häufigkeit",
@@ -304,7 +304,7 @@ LDN_Kapitel %>%
   geom_col(fill = Farbe_LND_1)+
   scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800),
                labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00"),
-               limits = c(0,48000), 
+               limits = c(0,50000), 
                expand = c(0,NA))+
   coord_flip()+
   
@@ -353,7 +353,7 @@ LDN_Interview <- LDN %>%
          InterviewMännlich = 0)
 
 # Achtung fehler- LdN217 Zwei Interviewer. 
-Frauen = c("Claudia Kemfert","Katharina Nocun","Svenja Schulze","Saskia Esken","Katharin Tai","Luisa Neubauer","Monika Börding")
+Frauen = c("Claudia Kemfert","Katharina Nocun","Svenja Schulze","Saskia Esken","Katharin Tai","Luisa Neubauer","Monika Börding"," Nadia Pantel")
 
 Männer = c("Michael Georg Link","Norbert Röttgen","Gerhard Schick","Ronen Steinke","Stefan Brink","Karl Lauterbach","Stephan Hobe","Achim Truger","Christian Mihr","Gerhard Knaus","Nils Melzer","Sven-Christian Kindler","Bijan Moini","Alexander Graf Lambsdorff","Wilfried Jilge","Armin Himmelrath","Oliver Meier","Boris Burghardt","Gerhard Schick","Christoph Möllers","Hannes Mosler","Wolfgang Seibel","Hannes Grassegger")
 
