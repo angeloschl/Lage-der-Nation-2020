@@ -1,7 +1,7 @@
 ---
 title: "Lage Der Nation - 2020"
 author: "Angelo Schleussner"
-date: "2.12.2020"
+date: "`r format(Sys.time(), '%d.%m.%Y')`"
 output: html_document
 editor_options: 
   chunk_output_type: console
@@ -23,12 +23,14 @@ library(ggtext)
 library(extrafont)
 library(showtext)
 library(glue)
+library(tidytext)
 ```
 
 
 ```{r include=FALSE}
 rm(list = ls())  #Loescht alle Vorherigen Variablen und Daten aus R
-LDN_df <- read_csv(here("data/LDN_Datensatz.csv")) 
+#LDN_df <- read_csv(here("data/LDN_Datensatz.csv")) 
+LDN_df <- read_csv(here("data/LDN_Datensatz_mit_Quelle.csv")) 
 
 Farbe_LND_1 = "#333399" # Blau
 Farbe_LND_2 = "#cccc66" # Gelb
@@ -239,8 +241,26 @@ LDN_Kapitel <- LDN %>%
   summarize(Kapitel_länge = sum(Kapitel_länge),
             Kapitel_länge = as.duration(Kapitel_länge)) %>% 
   ungroup() %>% 
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCovid\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCorona Update\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCoronavirus\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfstoff\\b", "Corona")) %>%
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bFeedback und Korrekturen\\b", "Feedback")) %>%
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimawandel\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimapaket\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimaerhitzung\\b", "Klima")) %>%
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bUS\\b", "USA")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bTrump\\b", "USA")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bTrump vs Twitter\\b", "USA")) %>%
+
+  
   mutate(Kapitel_Titel = ifelse(Kapitel_Titel == "Corana","Corona",Kapitel_Titel),
          Kapitel_Titel = as_factor(Kapitel_Titel)) %>% 
+  
   arrange(desc(date))
 
 
@@ -254,10 +274,10 @@ LDN_Kapitel %>%
   ggplot(aes(Kapitel_Titel,n))+
   geom_col(fill = Farbe_LND_1)+
   coord_flip()+
-  scale_y_continuous(limits = c(0,34), expand = c(0,NA))+
+  scale_y_continuous(limits = c(0,41), expand = c(0,NA))+
   
     labs(
-    title = "Top 10 Kapitel 2020 - Häufigkeit",
+    title = "Top 10 Kapitel in 2020 - Häufigkeit",
        subtitle = 
         paste("Wie oft kam ein Kapitel in den Folgen vor"),
     caption = "*Ohne Spezial-Folgen",
@@ -302,16 +322,16 @@ LDN_Kapitel %>%
   head(10) %>% 
   ggplot(aes(Kapitel_Titel,Kapitel_länge))+
   geom_col(fill = Farbe_LND_1)+
-  scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800),
-               labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00"),
-               limits = c(0,50000), 
+  scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800,50400,54000),
+               labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00"),
+               limits = c(0,57000), 
                expand = c(0,NA))+
   coord_flip()+
   
     labs(
-    title = "Top 10 Kapitel 2020 - Länge",
+    title = "Top 10 Kapitel in 2020 - Länge",
        subtitle = 
-        paste("Über welche Theme wurde am längsten gesprochen - in Stunden (ohne Spezial)."),
+        paste("Über welche Theme wurde am längsten gesprochen - in Stunden."),
     caption = "*Ohne Spezial-Folgen",
        x = "",
        y = "")+ 
@@ -414,7 +434,7 @@ AnzahlInterviewPartner <- LDN_InterviewPartner %>%
 
 LDN_Interview %>% 
   filter(Interview == 1) %>% 
-    filter(Interview == 1,
+  filter(Interview == 1,
          title != "LdN217 Amokfahrt in Trier, Corona, Rundfunkbeitrag, Subventionen für Presse-Verlage, Interview Saskia Esken und Norbert Walter-Borjans") %>% # Kein wikliches Interview in LdN217 eher verweis aus Spezial Folge
   mutate(InterviewGeschlecht = as.numeric(InterviewWeiblich) + as.numeric(InterviewMännlich)) %>% 
   group_by(InterviewGeschlecht) %>% 
@@ -474,7 +494,7 @@ LDN_Interview %>%
   geom_col(fill = Farbe_LND_1) +
 
   labs(
-    title = "Folgen pro Wochentag in 2020",
+    title = "Veröffentlichung nach Wochentagen in 2020",
        subtitle = 
         paste("Freitag ist Lage Tag"),
        x = "",
@@ -494,6 +514,134 @@ LDN_Interview %>%
   
 ```
 
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+LDN_Quellen <- LDN %>%
+  filter(date >= "2020-01-01",
+         Folge_Art == "Folge") %>%
+  group_by(title) %>% 
+  summarise(Shownotes = last(Shownotes))%>% 
+  ungroup() %>% 
+
+
+  # Text Weiter bereinigen
+  group_by(title) %>% 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "<|>|/", " ")) %>% 
+  mutate(Shownotes =  gsub(pattern = "Verabschiedung.*","",Shownotes)) %>% #Daten bis "Verabschiedung". Danach den Text löschen
+  mutate(Shownotes =  str_extract_all(Shownotes,"\\s\\s\\((.*?)\\)")) %>% # Quellen die Hinter dem Link in Klammernstehen extrahieren
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "c\\(\"*", "")) %>% 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, " ", "")) %>% 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, ";|,|https:|app.", "")) %>% 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "&#8211", "")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "[\r\n]" , "")) %>% # Absätze entfernen 
+  
+  # Unterschiedlich benannte, aber gleiche Quellen umbenennen. 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "SüddeutscheZeitung", "Süddeutsche")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "süddeutsche.de", "Süddeutsche")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSZ\\b", "Süddeutsche")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bsz.de\\b", "Süddeutsche")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSüddeutsche.de\\b", "Süddeutsche")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "spiegel.de", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "SPON", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "Spon", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "Spiegelonline", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSpiegel\\b", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bDerSpiegel\\b", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSpiegelPlus\\b", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSPIEGELPlus\\b", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bDERSPIEGEL\\b", "SpiegelOnline")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bSPIEGELONLINE\\b", "SpiegelOnline")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bFAZ\\b", "FrankfurterAllgemeine")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bFrankfurterAllgemeine.NET\\b", "FrankfurterAllgemeine")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\btwitter\\b", "Twitter")) %>%
+ 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\btagesschau\\b", "Tagesschau")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bTagesschau.de\\b", "Tagesschau")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bwahl.Tagesschau\\b", "Tagesschau")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\btagesSpiegelOnline\\b", "Tagesspiegel")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bDerTagesspiegel\\b", "Tagesspiegel")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bm.Tagesspiegel\\b", "Tagesspiegel")) %>%
+ 
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bNewYorkTimes\\b", "TheNewYorkTimes")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bZeitonline\\b", "ZEITONLINE")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bzeitonline\\b", "ZEITONLINE")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bhandelsblatt.com\\b", "Handelsblatt")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bhbhandelsblatt.com\\b", "Handelsblatt")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bclick.redaktion.Handelsblatt\\b", "Handelsblatt")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\byoutube.com\\b", "YouTube")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\btaz.de\\b", "TAZ")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bZDFheute\\b", "ZDF")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bzdf.de\\b", "ZDF")) %>%
+
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\brki.de\\b", "RKI")) %>%
+
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bheise.de\\b", "Heise")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bheiseonline\\b", "Heise")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bHeiseMagazine\\b", "Heise")) %>%
+  
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bWELT\\b", "DIEWELT")) %>%
+  mutate(Shownotes =  str_replace_all(string = Shownotes, "\\bwelt.de\\b", "DIEWELT")) %>%
+  ungroup() 
+
+
+
+
+LDN_Quellen_Plot <- LDN_Quellen %>%
+  unnest_tokens(word,Shownotes,to_lower = F)  %>% 
+  count(word, sort = T) %>% 
+  rename(Quelle = word,
+         Anzahl = n) %>% 
+  head(10)
+
+
+LDN_Quellen_Plot %>% 
+  mutate(Quelle = glue::glue("{ Quelle } (n={Anzahl})"),
+         Quelle = reorder(Quelle,Anzahl)) %>% 
+  ggplot(aes(Quelle,Anzahl))+
+  geom_col(fill = Farbe_LND_1)+
+  coord_flip()+
+  scale_y_continuous(limits = c(0,420), expand = c(0,NA))+
+  
+    labs(
+    title = "Top 10 Quellen 2020 - Häufigkeit",
+       subtitle = 
+        paste("Welche Quellen wurden am häufigsten zitiert"),
+    caption = "*Ohne Spezial-Folgen **Die wahre Anzahl kann leicht abweichen, da Quellen oft unterschielich benannt wurden",
+       x = "",
+       y = "")+ 
+  theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "#EBEBEB"),
+    plot.background = element_rect(fill = "#EBEBEB"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    axis.line.y.left = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks = element_line(color = "#e0e0e0"),
+    axis.line = element_line(color = "#e0e0e0"),
+    text = element_text(family = "Futura-Bold"),
+    plot.title = element_text(size = 22),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"))+
+  theme(
+    plot.title = element_markdown(lineheight = 1.1),
+    plot.subtitle = element_markdown(lineheight = 1.1))
+
+
+
+```
 
 
 
