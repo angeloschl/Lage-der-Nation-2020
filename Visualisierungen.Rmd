@@ -280,7 +280,7 @@ LDN_Kapitel %>%
     title = "Top 10 Kapitel in 2020 - Häufigkeit",
        subtitle = 
         paste("Wie oft kam ein Kapitel in den Folgen vor"),
-    caption = "*Ohne Spezial-Folgen",
+    caption = "*Ohne Spezial-Folgen **Die wahre Anzahl kann leicht abweichen, da Kapitel oft unterschielich benannt wurden",
        x = "",
        y = "")+ 
   theme(
@@ -332,7 +332,7 @@ LDN_Kapitel %>%
     title = "Top 10 Kapitel in 2020 - Länge",
        subtitle = 
         paste("Über welche Theme wurde am längsten gesprochen - in Stunden."),
-    caption = "*Ohne Spezial-Folgen",
+    caption = "*Ohne Spezial-Folgen **Die wahre Dauer kann leicht abweichen, da Kapitel oft unterschielich benannt wurden",
        x = "",
        y = "")+ 
   theme(
