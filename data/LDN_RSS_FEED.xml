@@ -6,7 +6,7 @@
 	<title>Lage der Nation - der Politik-Podcast aus Berlin</title>
 	<link>https://lagedernation.org</link>
 	<description><![CDATA[Mit Philip Banse und Ulf Buermeyer]]></description>
-	<lastBuildDate>Mon, 14 Dec 2020 11:18:23 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 18 Dec 2020 21:34:09 +0000</lastBuildDate>
 	
 <image><url>https://lagedernation.org/wp-content/blogs.dir/10/files/2020/06/apple_podcast_artwork_reverse.png</url><title>Lage der Nation - der Politik-Podcast aus Berlin</title><link>https://lagedernation.org</link></image>
 <atom:link rel="self" type="application/rss+xml" title="Lage der Nation - der Politik-Podcast aus Berlin (Lage der Nation (mp3))" href="https://lagedernation.org/feed/mp3/" />
@@ -16,7 +16,7 @@
 <atom:contributor><atom:name>Ulf Buermeyer</atom:name></atom:contributor>
 
 <atom:contributor><atom:name>Philip Banse</atom:name></atom:contributor>
-<generator>Podlove Podcast Publisher v3.2.1</generator>
+<generator>Podlove Podcast Publisher v3.2.2</generator>
 	<itunes:author>Philip Banse &amp; Ulf Buermeyer</itunes:author>
 	<itunes:type>episodic</itunes:type>
 	<itunes:summary><![CDATA[Jede Woche lassen Philip Banse und Ulf Buermeyer die politische Woche Revue passieren und kommentieren die Lage der Nation.]]></itunes:summary>
@@ -33,6 +33,283 @@
 	
 	<atom:link rel="me" href="https://podcasts.apple.com/podcast/id1092957894" />
 
+	
+	<item>
+        <title>LdN220 Corona: Lockdown, Triage, Impfstoff, EEG, Virtueller Klimagipfel, Software der Gesundheitsämter</title>
+		<link>https://lagedernation.org/2020/12/18/ldn220-corona-lockdown-triage-impfstoff-eeg-virtueller-klimagipfel-software-der-gesundheitsaemter/</link>
+		<pubDate>Fri, 18 Dec 2020 21:34:08 +0000</pubDate>
+		<guid isPermaLink="false">podlove-2020-12-18t08:30:03+00:00-de75534af177f18</guid>
+    	<description><![CDATA[Sponsoren: "Bild. Macht Deutschland?"(Amazon Prime Video), KoRo-Drogerie und "Gemeinsam gegen COVID-19" (Facebook).]]></description>
+		<atom:link rel="http://podlove.org/deep-link" href="https://lagedernation.org/2020/12/18/ldn220-corona-lockdown-triage-impfstoff-eeg-virtueller-klimagipfel-software-der-gesundheitsaemter/#" />
+		
+<enclosure url="https://dts.podtrac.com/redirect.mp3/cdn.kuechenstud.io/lagedernation/LdN220.mp3?ptm_source=feed&amp;ptm_context=mp3&amp;ptm_file=LdN220.mp3" length="65828039" type="audio/mpeg"/>
+
+		<itunes:duration>01:27:31</itunes:duration>
+		<itunes:author>Philip Banse &amp;amp; Ulf Buermeyer</itunes:author>
+		<itunes:subtitle>Sponsoren: &amp;quot;Bild. Macht Deutschland?&amp;quot;(Amazon Prime Video), KoRo-Drogerie und &amp;quot;Gemeinsam gegen COVID-19&amp;quot; (Facebook).</itunes:subtitle>
+		<itunes:title>Corona: Lockdown, Triage, Impfstoff, EEG, Virtueller Klimagipfel, Software der Gesundheitsämter</itunes:title>
+		<itunes:episode>220</itunes:episode>
+		<itunes:episodeType>full</itunes:episodeType>
+		
+		
+		<content:encoded><![CDATA[<p><strong>Corona: Lockdown&nbsp;&nbsp;</strong></p>
+<ul>
+<li><a href="https://www.coronawarn.app/de/blog/2020-12-16-corona-warn-app-version-1-9/">Corona-Warn-App Version 1.9 greift auf Version 2 des Exposure Notification Framework zurück</a> (coronawarn.app)</li>
+<li><a href="https://www.youtube.com/watch?v=por30jSswCQ">BPK: “Corona-Lage vor Weihnachten”, u.a. mit Jens Spahn und Lothar Wieler</a> (YouTube)</li>
+<li><a href="https://www.sueddeutsche.de/politik/merkel-corona-beschluesse-1.5072261">Die enttäuschte Kanzlerin</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5148970">Corona in Europa: Wer kommt besser durch die zweite Welle?</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5149012">Korrumpiert von der Aufmerksamkeitsökonomie</a> (Süddeutsche.de)</li>
+<li><a href="https://spiral.imperial.ac.uk/bitstream/10044/1/84879/2/REACT1_r7_FINAL_14.12.20.pdf">REACT-1 round 7 updated report: regional heterogeneity in changes in prevalence of SARS-CoV-2 infection during the second national COVID-19 lockdown in England</a> (imperial.ac.uk)</li>
+<li><a href="https://science.sciencemag.org/content/early/2020/12/15/science.abd9338.full">Inferring the effectiveness of government interventions against COVID-19</a>&nbsp;(science.sciencemag.org)</li>
+<li><a href="https://www.handelsblatt.com/meinung/kommentare/kommentar-datenschutz-ist-kein-hindernis-im-kampf-gegen-corona/26716660.html">Kommentar: Datenschutz ist kein Hindernis im Kampf gegen Corona</a> (handelsblatt.com)</li>
+<li><a href="http://sz.de/1.5147742">Die Wirtschaft braucht den Lockdown</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5147653">Wie schützt man die Großeltern an Weihnachten?</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5147758">Corona: Wie das Virus abermals die Pflegeheime trifft</a> (Süddeutsche.de)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mnO.A.We_xAfCr8Qwe9CRUOdQQMkIq_JJHYcVjDE7dQrYQvekYM8nYRJ7jEJBhhZwlnMnmwoZlo6Dp01pMB0S5lpQgBQ">Umweltbundesamt: Online-Shopping für die Klimabilanz nicht zwingend schlechter</a> (heise online)</li>
+<li><a href="http://sz.de/1.5151446">Corona-Einschränkungen sind unterschiedlich wirksam</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5151299">Warum die Lage auf den Intensivstationen ernst ist</a> (Süddeutsche.de)</li>
+<li><a href="https://www.zdf.de/nachrichten/politik/corona-shutdown-lockdown-finanzhilfen-kitas-schulen-100.html">Fehlende Verordnungen: Wo es beim Shutwon hakt und quietscht</a> (ZDFheute)</li>
+<li><a href="https://www.zeit.de/politik/deutschland/2020-12/coronavirus-deutschland-lockdown-weihnachten-bundesregierung-massnahmen">Wie konnte es so weit kommen</a> (zeit.de)</li>
+<li><a href="https://www.bundesregierung.de/breg-de/aktuelles/telefonkonferenz-der-bundeskanzlerin-mit-den-regierungschefinnen-und-regierungschefs-der-laender-am-13-dezember-2020-1827392">Telefonkonferenz der Bundeskanzlerin mit den Regierungschefinnen und Regierungschefs der Länder am 13. Dezember 2020</a> (Bundesregierung)</li>
+<li><a href="https://interaktiv.tagesspiegel.de/lab/hotspots-und-rechte-haengen-afd-hochburgen-und-corona-hotspots-zusammen/">Hängen AfD-Hochburgen und hohe Coronazahlen zusammen?</a> (Tagesspiegel)</li>
+<li><a href="https://lagedernation.org/2020/03/31/ldn182-corona-interview-hermann-josef-tenhagen/#shownotes">LdN182 Corona (Interview: Hermann-Josef Tenhagen)</a> (Lage der Nation &#8211; der Politik-Podcast aus Berlin)</li>
+<li><a href="https://www.coronavirus.sachsen.de/infektionsfaelle-in-sachsen-4151.html">Infektionsfälle in Sachsen</a> (coronavirus.sachsen.de)</li>
+<li><a href="https://www.buzzfeed.com/de/hristioboytchev/exklusiv-deutsche-aerzte-unterschlagen-interessenkonflikte">Exklusive Recherche: Ärzte unterschlagen systematisch Interessenkonflikte</a> (BuzzFeed Community)</li>
+</ul>
+<p><strong>Corona:&nbsp; Triage</strong>&nbsp;</p>
+<ul>
+<li><a href="https://www.zdf.de/nachrichten/politik/corona-triage-intensivstation-kleeblatt-100.html">Corona-Intensivbetten: So sollen Triagen vermieden werden</a> (ZDFheute)</li>
+<li><a href="https://twitter.com/lea_beckmann_/status/1250110864952344578?s=12">Lea Beckmann</a> (twitter)</li>
+</ul>
+<p><strong>Corona: Impfstoff</strong></p>
+<ul>
+<li><a href="https://www.handelsblatt.com/meinung/gastbeitraege/gastkommentar-wir-sollten-pruefen-ob-impfverweigerer-den-versicherungsschutz-bei-einer-corona-erkrankung-verlieren/26717742.html">Gastkommentar: Wir sollten prüfen, ob Impfverweigerer den Versicherungsschutz bei einer Corona-Erkrankung verlieren</a> (handelsblatt.com)</li>
+<li><a href="https://www.spiegel.de/wissenschaft/medizin/coronavirus-was-sie-jetzt-ueber-die-impf-priorisierungen-wissen-muessen-a-34c23c33-41a5-4157-ac04-6e2fb9ff9e32?sara_ecid=soci_upd_KsBF0AFjflf0DZCxpPYDCQgO1dEMph">Coronavirus: Wie gerecht sind die Impf-Priorisierungen?</a> (spiegel.de)</li>
+<li><a href="https://www.rki.de/DE/Content/Infekt/EpidBull/Archiv/2021/Ausgaben/02_21.pdf?__blob=publicationFile">Beschluss der STIKO für die Empfehlung der COVID-19-Impfung und die dazugehörige wissenschaftliche Begründung</a> (rki.de)</li>
+<li><a href="https://www.spiegel.de/wissenschaft/medizin/coronavirus-was-sie-jetzt-ueber-die-impf-priorisierungen-wissen-muessen-a-34c23c33-41a5-4157-ac04-6e2fb9ff9e32?sara_ecid=soci_upd_KsBF0AFjflf0DZCxpPYDCQgO1dEMph">Coronavirus: Wie gerecht sind die Impf-Priorisierungen?</a> (Der Spiegel)</li>
+<li><a href="http://sz.de/1.5151602">Zwischen Hoffnung und Skepsis</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5150790">Corona-Impfung: Viele offene Fragen bei der Impfstrategie</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5151552">Corona-Impfung: Die Vertrauensfrage</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5151509">„Impfen ist der Weg aus dieser Krise“</a> (Süddeutsche.de)</li>
+<li><a href="https://www.handelsblatt.com/unternehmen/industrie/pharmaunternehmen-das-sind-die-wichtigsten-hersteller-von-corona-impfstoffen/26705022.html?ticket=ST-15490775-wFxJbDp2DhcFcidebKY3-ap6">Pharmaunternehmen: Das sind die wichtigsten Hersteller von Corona-Impfstoffen</a> (hbapp.handelsblatt.com)</li>
+<li><a href="https://www.handelsblatt.com/technik/forschung-innovation/biontech-und-moderna-wie-sicher-sind-die-ersten-corona-impfstoffe/26720648.html">Wie sicher sind die ersten Corona-Impfstoffe?</a> (Handelsblatt)</li>
+<li><a href="https://overcast.fm/+KZwjczFg8">Der Impfstoff kommt </a>&nbsp;(Der Tag, Deutschlandfunk)</li>
+<li><a href="https://www.zdf.de/nachrichten/panorama/corona-impfung-stiko-100.html">Stiko-Chef zu Impfstoffen: &#8220;Wir müssen sachlich aufklären&#8221;</a> (zdf.de)</li>
+<li><a href="https://www.zdf.de/nachrichten/panorama/corona-impfung-virus-impfzentren-100.html">Bundesländer wappnen sich für den Impfstart</a> (ZDFheute)</li>
+<li><a href="http://sz.de/1.5149061">Corona: Der Impfstoff wird beinahe zum politischen Brennstoff</a> (Süddeutsche.de)</li>
+<li><a href="https://threadreaderapp.com/thread/1339678560630530050.html">Thread by @BMauschen</a>&nbsp;(threadreaderapp.com)</li>
+<li><a href="https://ec.europa.eu/germany/news/20201215-biontech-impfstoff_de">Europäische Arzneimittel-Agentur EMA wird bis 21. Dezember über BioNTech-Impfstoff entscheiden: Fragen und Antworten zum Zulassungsverfahren </a>(Deutschland &#8211; European Commission)</li>
+<li><a href="https://www.pharmazeutische-zeitung.de/biontech-und-pfizer-beantragen-bedingte-zulassung-in-der-eu-122209/">Covid-19-Impfstoff: Biontech und Pfizer beantragen bedingte Zulassung in der EU</a> (Pharmazeutische Zeitung online)</li>
+<li><a href="https://www.bfarm.de/SharedDocs/Glossareintraege/DE/B/Bedingte%20Zulassung.html">BfArM &#8211; Glossar &#8211; Bedingte Zulassung</a> (bfarm.de)</li>
+</ul>
+<p><strong>EEG</strong></p>
+<ul>
+<li><a href="http://sz.de/1.5151479">Klimaschutz: Der nächste Streit</a> (Süddeutsche.de)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cn_I.rYa.B0s0Z.A.b2ekoH9qS1MlMzv4EiKijwTsMVRfIGpWW2ZClOf9j1fhUhHvTGfCxflGLq0ytvnoSFTi12DB1DTIWJ4w4nRPeQ">Erneuerbare Energien: Die EEG-Novelle sieht Milliardenamnestie für Konzerne vor</a> (spiegel.de)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cn_I.rYa.B0s1Z.A.OEe2QVvHdoo2naxbXk5vCAzCj60NxMVqpKHdeShUBe_CXGgQG3GYAXS-9chkJ6liChTGfpTTPdKS-Di8vpHxDw">Erneuerbare Energien: „Insgesamt unzureichend&#8221;: Grüne und Verbände üben scharfe Kritik an EEG-Novelle</a> (handelsblatt.com)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cn_I.rYa.B0s09.A.Tj3_65ysuYBouegUZUXW4P1j5BlMIFL_43HatPdwrCs64v0Z8A0l_Ha_WV3YhcRY712j8Ab8hAU7gxZ3Fqc8OA">Erderwärmung: Trügerische Hoffnungen für das Klima</a> (FAZ.NET)</li>
+<li><a href="https://www.spiegel.de/wirtschaft/soziales/kohleausstieg-wirtschaftsministerium-hielt-brisante-studie-unter-verschluss-a-ad86aec0-5f29-4cf4-a005-0c9369ec5bcb">Kohleausstieg: Wirtschaftsministerium hielt brisante Studie unter Verschluss</a> (spiegel.de)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cn5E.rYa.B0prZ.A.cxswSUnX_5KBKQPoMbQU3wL75RqgKY7TIwyFXGAoJ4YJsvuXh5k7OwG4cPUfrc0KkPD8_q_AaRBqluUOOejllg">GroKo wird öko: Neue Regeln für den Ausbau Erneuerbarer Energie vereinbart</a> (Umwelt)</li>
+<li><a href="https://www.pv-magazine.de/2020/12/14/minus-auf-eeg-konto-erreicht-fast-45-milliarden-euro/">Minus auf EEG-Konto erreicht fast 4,5 Milliarden Euro</a> (pv magazine Deutschland)</li>
+<li><a href="https://www.agrarheute.com/energie/koalition-einig-neues-eeg-kommt-jahreswechsel-576179">Koalition einig: Neues EEG kommt zum Jahreswechsel</a> (agrarheute)</li>
+<li><a href="https://taz.de/Einigung-ueber-EEG-Novelle/!5733729/">Einigung über EEG-Novelle: Ökostrom-Ausbau wird einfacher</a> (taz.de)</li>
+<li><a href="https://www.faz.net/aktuell/wirtschaft/reform-des-eeg-17102465.html">Koaltion einigt sich: Reform des EEG für schnellere CO2-Reduzierung</a> (FAZ.NET)</li>
+<li><a href="https://www.solarserver.de/2020/12/14/einigung-beim-eeg-2021-klare-verbesserungen-fuer-photovoltaik/">Einigung beim EEG 2021: Verbesserungen für Photovoltaik | Solarserver</a> (Solarserver)</li>
+<li><a href="https://www.tagesschau.de/wirtschaft/boerse/eeg-strommix-101.html">Anteil erneuerbarer Energien auf Rekordniveau</a> (tagesschau.de)</li>
+<li><a href="https://www.pv-magazine.de/2020/12/14/eeg-novelle-2021-spd-verkuendet-durchbruch-enttaeuschung-bei-solarbranche/">EEG-Novelle 2021: SPD verkündet Durchbruch – Enttäuschung bei Solarbranche</a> (pv magazine Deutschland)</li>
+<li><a href="https://www.klimareporter.de/strom/nur-eine-not-op-am-eeg">Nur eine Not-OP am EEG</a> (klimareporter°)</li>
+<li><a href="https://www.klimareporter.de/strom/spd-und-union-begnuegen-sich-mit-eeg-kosmetik">SPD und Union begnügen sich mit EEG-Kosmetik</a> (klimareporter°)</li>
+<li><a href="http://sz.de/1.5147692">Kafkaeskes Gebäude</a> (Süddeutsche.de)</li>
+<li><a href="http://sz.de/1.5147663">Energiewende: Koalition macht Solarstrom attraktiver</a> (Süddeutsche.de)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mnu.A.pnv8qBzuf1XGdZPdWZHnItgY9iQTBgBYX7BrIVOq_hk0F7fIxjLztNut0vZfdQasSdL9XrOqwV_t7AzsS1UzZw">Klima &#8211; Geldpolitik for Future</a> (freitag.de)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mn-.A.iOg4E2yF-t0_pDgcc2DvD3RyB9Px1BXtlQrVk6PxAb43eobx9022n2DqVV4_1zkDKZMCzRJoVCP5kJL3SD2xUg">Bosch, Daimler, fliegende Brennstoffzelle und grüner Stahl</a> (Erneuerbare Energien)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0moB.A.jI5DvI0xIDXF3DyR6cWJ5_lJM6AkfMaIaIVE-S0c-pwhxO7GD8EXTZCVQ5ts6kOKRZvHxf1i79x5sxjTKw4kaw">Marvel Fusion: Mit Laserkraft zur Energiewende</a> (Süddeutsche.de)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0moF.A.xIx1XH5myabJKFFn_kGu__wN_X4OC3VWu5IQEPSAtYdkzcHscCfJ49kUkk-t6OvwVQJw_lih_yIitd0OwLuroQ">Windenergie: Deutschland und Dänemark machen gemeinsame Sache</a> (Der Nordschleswiger)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mn3.A.3HlAoDpcTDR7fOZMWsbNf-6Ahcnubg5euG9DSuSxJSiPEvF4jnJw9HY5oSPd7WrHESKKu_PPDrkdYSIOSeAhYQ">Ruhrgebiet beim Zukunftsthema Wasserstoff gut aufgestellt</a> (Allgemeine Zeitung)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0moI.A.cRW6BwUIDOwT33HZQkyDS4DqN2ySUKUsj8nJhH_m8rfg6WfDjATmWRDbcdLpKjMPEIfqNKPH6QRbLxbiPrum6w">Ökostrom: Koalition einigt sich auf Reform für schnelleren Ausbau</a> (spiegel.de)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mnT.A.VA7O3hO9DDqHbXhkux1wx0Y49mmRlZMMMJJKVtVrwWASHCioY4RTZI35GJikvAV__vdV7ITDS-KwKkYWCJqiKQ">Anteil erneuerbarer Energien auf Rekordniveau</a> (tagesschau.de)</li>
+<li><a href="https://www.iwkoeln.de/studien/iw-kurzberichte/beitrag/andreas-fischer-roland-kube-bisherige-ausbauziele-reichen-nicht-aus-492733.html" data-rich-text-format-boundary="true">EEG: Bisherige Ausbauziele reichen nicht aus</a> (Institut der deutschen Wirtschaft)</li>
+<li><a href="https://background.tagesspiegel.de/energie-klima/eeg-reform-verfehlt-2030-ziel-drastisch">EEG-Reform verfehlt 2030-Ziel drastisch</a> (background.tagesspiegel.de)</li>
+<li><a href="https://www.klimareporter.de/deutschland/regierung-ignoriert-kritik-am-eeg-entwurf">Regierung ignoriert Kritik am EEG-Entwurf</a> (klimareporter°)</li>
+<li><a href="https://www.klimareporter.de/images/dokumente/2020/12/top1-nr14-bmwi-fh-aea-zu-ge-aend-erneuerbare-energien-gesetz-kabinettvorlage-1909143.pdf">Entwurf eines Gesetzes zur Änderung des Erneuerbare-Energien-Gesetzes und weiterer energierechtlicher Vorschriften</a> (klimareporter.de)</li>
+<li><a href="https://www.solarserver.de/2020/12/09/photovoltaik-deutsche-wollen-keine-eeg-umlage-auf-eigenverbrauch/">Photovoltaik: Bürger wollen keine EEG-Umlage auf Eigenverbrauch | Solarserver</a> (Solarserver)</li>
+<li><a href="https://www.fr.de/wirtschaft/haengepartie-ums-eeg-90127615.html">Hängepartie ums EEG</a> (https://www.fr.de)</li>
+<li><a href="https://www.spiegel.de/wirtschaft/bundestag-beschliesst-oekostrom-reform-a-b821929b-5902-43c1-b127-76fff8580ec5">Erneuerbare Energien: Bundestag beschließt Ökostromreform </a> (spiegel.de)</li>
+<li><a href="https://www.spiegel.de/wissenschaft/mensch/beschluss-der-eeg-reform-trippelschritte-statt-grosser-wurf-a-6146a3d8-ddfd-4424-bbd2-35305cedce73">Beschluss der EEG-Reform: Trippelschritte statt großer Wurf t</a> (spiegel.de)</li>
+<li><a href="https://www.spiegel.de/wirtschaft/soziales/erneuerbare-energien-die-eeg-novelle-sieht-milliardenamnestie-fuer-konzerne-vor-a-302b4cfe-ad46-4b90-9b39-7b41b5a7ce77">Erneuerbare Energien: Die EEG-Novelle sieht Milliardenamnestie für Konzerne vor </a>&nbsp;(spiegel.de)</li>
+<li><a href="https://www.windbranche.de/news/nachrichten/artikel-36583-bnetza-ausschreibung-windenergie-flaute-setzt-sich-fort">BNetzA-Ausschreibung: Windenergie Flaute setzt sich fort</a> (windbranche.de)</li>
+<li><a href="https://www.windbranche.de/wirtschaft/eeg-verguetung/eeg-ausschreibungen">Windbranche &#8211; Marktplatz und Firmen </a>&nbsp;(windbranche.de)</li>
+</ul>
+<p><strong>Virtuelle Klimagipfel</strong></p>
+<ul>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mn_.A.11FCJk8hHKLZo084ZlEtuE2v0fPTCL7jDnIQXh0Y7A3HCpo1UK2XuxkebK-VZOmqgH31rTTd8Ama7jJuETlhiQ">China formalises cut to Australian coal imports, state media reports</a> (the Guardian)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mnv.A.Vpr6vBHQCGX0SCj0ZbVPg8KSudq7sfXS0NBdlgVztq5UJGWn2ZHzFZGUm4auWu9jpuNrX5I0gOZKv2Pj5vze-w">Near-Zero Industrial Emissions By 2050 Would Boost U.S. GDP 3.3%, Create 5 Million Jobs</a> (Forbes)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mni.A.CkAMuIuTIcbHtOaobvbfP7qKmNC_uE6E5u489yW03h3vHQlyTW9NSBY1M_jMRIIZMM11AoE4fKazRanc0QNzzw">Exxon Mobil, under pressure on climate, aims to cut emissions intensity by 2025</a> (U.S.)</li>
+<li><a href="https://nl.tagesspiegel.de/r.html?uid=D.B.Cnw_.rYa.B0mnY.A.-skU3rY2BI-odi91T3dKAoqlkpO2rnnbQUGTNDLv9kBmk-jkzXG8uUW0UiKYskP9owL0JaHDORbgcgDb6PzfSA">Towards carbon neutrality – one year in</a> (www.euractiv.com)</li>
+<li><a href="https://www.gov.uk/government/news/summit-shows-new-surge-in-action-and-ambition-on-road-to-glasgow-climate-conference">Summit shows new surge in action and ambition on road to Glasgow Climate Conference</a> (GOV.UK)</li>
+</ul>
+<p><strong>Software der Gesundheitsämter</strong></p>
+<ul>
+<li class="firstInSlot"><a href="https://www.rki.de/DE/Content/Infekt/IfSG/DEMIS/DEMIS_inhalt.html">DEMIS − Deutsches Elek­tro­ni­sches Melde- und Infor­ma­tions­system für den Infek­tions­schutz</a> (RKI)&nbsp;</li>
+<li class="firstInSlot"><a href="https://www.sormas-oegd.de/">SORMAS-ÖGD-COVID-19 – Das Kontaktpersonen-Management im ÖGD</a></li>
+<li class="firstInSlot"><a href="https://www.rki.de/DE/Content/Infekt/IfSG/Software/software_inhalt.html"><span lang="en-GB" xml:lang="en-GB">Software</span>&nbsp;&#8211;&nbsp;<span lang="en-GB" xml:lang="en-GB">SurvNet</span>@RKI</a> (RKI)&nbsp;</li>
+</ul>
+<p><strong>Verabschiedung&nbsp;</strong></p>
+<ul>
+<li><a href="https://ec.europa.eu/info/strategy/priorities-2019-2024/europe-fit-digital-age/digital-services-act-ensuring-safe-and-accountable-online-environment_de">Gesetz über digitale Dienste: mehr Sicherheit und Verantwortung im Online-Umfeld</a> (ec.europa.eu)</li>
+<li><a href="https://ec.europa.eu/info/strategy/priorities-2019-2024/europe-fit-digital-age/digital-markets-act-ensuring-fair-and-open-digital-markets_de">Das Gesetz über digitale Märkte: für faire und offene digitale Märkte</a> (ec.europa.eu)</li>
+<li><a href="https://eur-lex.europa.eu/legal-content/DE/ALL/?uri=celex%3A32000L0031">EUR-Lex &#8211; 32000L0031 &#8211; EN &#8211; EUR-Lex</a> (eur-lex.europa.eu)</li>
+<li><a href="https://ec.europa.eu/commission/presscorner/detail/de/ip_20_2347">Press corner</a> (ec.europa.eu)</li>
+<li><a href="https://publiccode.eu">Public Money, Public Code</a> (publiccode.eu)</li>
+</ul>
+<p><strong>Sponsoren</strong></p>
+<p>&#8220;BILD. Macht Deutschland?&#8221; (Amazon Prime Video)</p>
+<ul class="p-rich_text_list p-rich_text_list__bullet" data-stringify-type="unordered-list" data-indent="0">
+<li><i data-stringify-type="italic">BILD. MACHT. DEUTSCHLAND?&#8221; &#8211; ab jetzt &#8211; exklusiv bei Amazon Prime Video. Wer noch kein Kunde ist, kann das Abo 30 Tage lang kostenlos testen.</i></li>
+<li><a class="c-link" href="http://bookbeat.de/nation" target="_blank" rel="noopener noreferrer" data-stringify-link="https://www.primevideo.com" data-sk="tooltip_parent">primevideo.com</a></li>
+</ul>
+<div id="1608289752.000400" class="c-virtual_list__item" role="listitem" data-qa="virtual-list-item">
+<div class="c-message_kit__background p-message_pane_message__message c-message_kit__message" role="document" data-qa="message_container" data-qa-unprocessed="false" data-qa-placeholder="false">
+<div class="c-message_kit__hover" role="document" data-qa-hover="true">
+<div class="c-message_kit__actions c-message_kit__actions--above">
+<div class="c-message_kit__gutter">
+<div class="c-message_kit__gutter__right" data-qa="message_content">
+<div class="c-message_kit__blocks c-message_kit__blocks--rich_text">
+<div class="c-message__message_blocks c-message__message_blocks--rich_text">
+<div class="p-block_kit_renderer" data-qa="block-kit-renderer">
+<div class="p-block_kit_renderer__block_wrapper p-block_kit_renderer__block_wrapper--first">
+<div class="p-rich_text_block" dir="auto">
+<div id="1607678605.000700" class="c-virtual_list__item" role="listitem" data-qa="virtual-list-item">
+<div class="c-message_kit__background p-message_pane_message__message c-message_kit__message" role="document" data-qa="message_container" data-qa-unprocessed="false" data-qa-placeholder="false">
+<div class="c-message_kit__hover" role="document" data-qa-hover="true">
+<div class="c-message_kit__actions c-message_kit__actions--above">
+<div class="c-message_kit__gutter">
+<div class="c-message_kit__gutter__right" data-qa="message_content">
+<div class="c-message_kit__blocks c-message_kit__blocks--rich_text">
+<div class="c-message__message_blocks c-message__message_blocks--rich_text">
+<div class="p-block_kit_renderer" data-qa="block-kit-renderer">
+<div class="p-block_kit_renderer__block_wrapper p-block_kit_renderer__block_wrapper--first">
+<div class="p-rich_text_block" dir="auto">
+<div class="p-rich_text_section">KoRo</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="1607678605.000900" class="c-virtual_list__item" role="listitem" data-qa="virtual-list-item">
+<div class="c-message_kit__background c-message_kit__background--hovered p-message_pane_message__message c-message_kit__message p-message_pane_message__message--last" role="document" data-qa="message_container" data-qa-unprocessed="false" data-qa-placeholder="false">
+<div class="c-message_kit__hover c-message_kit__hover--hovered" role="document" data-qa-hover="true">
+<div class="c-message_kit__actions c-message_kit__actions--above">
+<div class="c-message_kit__labels__offscreen_message">&nbsp;</div>
+<div class="c-message_kit__gutter">
+<div class="c-message_kit__gutter__right" data-qa="message_content">
+<div class="c-message_kit__blocks c-message_kit__blocks--rich_text">
+<div class="c-message__message_blocks c-message__message_blocks--rich_text">
+<div class="p-block_kit_renderer" data-qa="block-kit-renderer">
+<div class="p-block_kit_renderer__block_wrapper p-block_kit_renderer__block_wrapper--first">
+<div class="p-rich_text_block" dir="auto">
+<ul class="p-rich_text_list p-rich_text_list__bullet" data-stringify-type="unordered-list" data-indent="0">
+<li>5% Rabatt</li>
+<li>Code: LAGEDERNATION</li>
+<li><a class="c-link" href="http://korodrogerie.de/" target="_blank" rel="noopener noreferrer" data-stringify-link="http://korodrogerie.de" data-sk="tooltip_parent">korodrogerie.de</a></li>
+</ul>
+<p>Gemeinsam gegen COVID-19 (Facebook)&nbsp;</p>
+<ul>
+<li><a href="https://about.facebook.com/de/actions/europe">https://about.facebook.com/de/actions/europe</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="1607678605.000900" class="c-virtual_list__item" role="listitem" data-qa="virtual-list-item">
+<div class="c-message_kit__background c-message_kit__background--hovered p-message_pane_message__message c-message_kit__message p-message_pane_message__message--last" role="document" data-qa="message_container" data-qa-unprocessed="false" data-qa-placeholder="false">
+<div class="c-message_kit__hover c-message_kit__hover--hovered" role="document" data-qa-hover="true">
+<div class="c-message_kit__actions c-message_kit__actions--above">
+<div class="c-message_kit__gutter">
+<div class="c-message_kit__gutter__right" data-qa="message_content">
+<div class="c-message_kit__blocks c-message_kit__blocks--rich_text">
+<div class="c-message__message_blocks c-message__message_blocks--rich_text">
+<div class="p-block_kit_renderer" data-qa="block-kit-renderer">
+<div class="p-block_kit_renderer__block_wrapper p-block_kit_renderer__block_wrapper--first">
+<div class="p-rich_text_block" dir="auto">
+<p><strong style="font-size: inherit">Bilder&nbsp;</strong></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul id="block-f4506abb-9ca2-4d2f-8752-171635b57968" class="block-editor-block-list__block wp-block is-selected rich-text block-editor-rich-text__editable is-hovered wp-block" role="textbox" aria-label="Schreibe eine Liste…" data-block="f4506abb-9ca2-4d2f-8752-171635b57968" data-type="core/list" data-title="Liste">
+<li><a href="https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/Dez_2020/2020-12-17-de.pdf?__blob=publicationFile" data-rich-text-format-boundary="true">Täglicher Lagebericht des RKI zur Coronavirus-Krankheit-2019 (COVID-19), 17.12.2020</a> (rki.de)</li>
+<li>Impfstoff, Photo by <a href="https://unsplash.com/@cdc?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">CDC</a> on <a href="https://unsplash.com/s/photos/vaccine?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></li>
+<li>Windrad, Photo by <a href="https://unsplash.com/@marcreation?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Marcreation</a> on <a href="https://unsplash.com/s/photos/windwheel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></li>
+</ul>
+
+
+<p><strong>Hausmitteilungen&nbsp;</strong></p>
+
+
+
+<ul><li>Wir empfehlen, die Lage mit <a rel="noreferrer noopener" href="https://lagedernation.org/apps/" target="_blank">einer dieser Podcast-Apps</a> zu hören, damit alle Features korrekt funktionieren.</li><li><a href="https://lagedernation.org/spenden/">Spenden per Überweisung</a></li><li><a href="Bank://singlepaymentsepa?name=PHILIP%20BANSE&amp;reason=Lage%20der%20Nation%20-%20Spende&amp;iban=DE39700222000073484510&amp;bic=FDDODEMMXXX&amp;amount=9%2C99">Spenden: Banking-Program mit BezahlCode-Standard</a></li><li><a href="https://www.paypal.me/lagedernation">Spenden: Paypal</a></li><li><a rel="noreferrer noopener" href="https://shop.spreadshirt.de/lagedernation" target="_blank">Lage-Shop</a></li><li><a rel="noreferrer noopener" href="https://itunes.apple.com/de/podcast/lage-der-nation/id1092957894?l=en" target="_blank">&#8220;Lage der Nation&#8221; bei iTunes bewerten</a></li><li><a rel="noreferrer noopener" href="https://www.youtube.com/playlist?list=PLBfAMei5WNi86C5cXn627rkXaXqQBbQrB" target="_blank">&#8220;Lage der Nation&#8221; bei Youtube</a></li><li><a rel="noreferrer noopener" href="https://www.facebook.com/lagenation/" target="_blank">&#8220;Lage der Nation&#8221; bei Facebook</a></li><li>&#8220;<a href="https://www.instagram.com/lagedernation/">Lage der Nation&#8221; bei Instagram&nbsp;</a></li><li><a rel="noreferrer noopener" href="https://twitter.com/lagenation" target="_blank">&#8220;Lage der Nation&#8221; bei Twitter</a></li><li><a rel="noreferrer noopener" href="https://de.m.wikipedia.org/wiki/Lage_der_Nation_(Podcast)" target="_blank">&#8220;Lage der Nation&#8221; in der Wikipedia</a></li></ul>
+]]></content:encoded><psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+  <psc:chapter start="00:00:00.000" title="Begr&#xFC;&#xDF;ung"/>
+  <psc:chapter start="00:00:26.602" title="Begr&#xFC;&#xDF;ung: Open Air"/>
+  <psc:chapter start="00:04:43.301" title="Corona: Welle l&#xE4;uft"/>
+  <psc:chapter start="00:06:08.933" title="Corona: Intensivstationen fast voll"/>
+  <psc:chapter start="00:07:16.415" title="Corona: Da stebern Menschen"/>
+  <psc:chapter start="00:10:26.339" title="Corona: Triage in Sachsen?"/>
+  <psc:chapter start="00:13:00.182" title="Impfung: Auch in der EU soll es losgehen"/>
+  <psc:chapter start="00:17:23.822" title="Impfen: Wie soll das in der Praxis aussehen?"/>
+  <psc:chapter start="00:24:32.680" title="Impf-Prio: Bundestag sollte entscheiden"/>
+  <psc:chapter start="00:29:30.621" title="Impf-Skepsis: Transparente Risiko-Kommunikation ist entscheidend"/>
+  <psc:chapter start="00:35:36.821" title="Impfstoff: Nebenwirkungen"/>
+  <psc:chapter start="00:37:05.376" title="Impfen: Keine Pflicht, aber Privilegien?"/>
+  <psc:chapter start="00:46:20.678" title="EEG: DAS Gesetz der Energiewende wird reformiert. Ein bisschen."/>
+  <psc:chapter start="00:47:23.652" title="EEG: Geschichte des Gesetzes"/>
+  <psc:chapter start="00:57:03.394" title="EEG: Inhalte der Novelle"/>
+  <psc:chapter start="00:57:52.577" title="EEG: Positive &#xC4;nderungen"/>
+  <psc:chapter start="01:03:07.723" title="EEG: Negative &#xC4;nderungen"/>
+  <psc:chapter start="01:06:38.109" title="EEG: Wichtigste Frage vertagt"/>
+  <psc:chapter start="01:09:39.284" title="EEG: Ulfs Fundamental-Kritik"/>
+  <psc:chapter start="01:13:47.410" title="EEG: Soll man die EEG-Umlage abschaffen?"/>
+  <psc:chapter start="01:15:17.660" title="Klimagipfel: Industriel&#xE4;nder versprechen Klimaneutralist&#xE4;t"/>
+  <psc:chapter start="01:18:06.185" title="Gesundheits&#xE4;mter: Software-Versorgung"/>
+  <psc:chapter start="01:23:48.881" title="Feedback: Funkzellenabfragentransparenzsystem"/>
+  <psc:chapter start="01:26:46.702" title="Verabschiedung"/>
+</psc:chapters>
+<atom:contributor><atom:name>Ulf Buermeyer</atom:name></atom:contributor>
+
+<atom:contributor><atom:name>Philip Banse</atom:name></atom:contributor>
+	</item>
 	
 	<item>
         <title>LdN219 Corona-Krise eskaliert, EU-Rechtsstaatsmechanismus kommt, neues EU-Klimaziel, LAX VOX, Funkzellenabfragen-Transparenz-System, Rundfunkbeitrag</title>
