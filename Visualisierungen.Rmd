@@ -236,33 +236,66 @@ LDN %>%
 LDN_Kapitel <- LDN %>% 
   as_tibble() %>% 
   mutate(Kapitel_Titel = str_replace(Kapitel_Titel,":.*", ""),
-         Kapitel_Titel = str_replace(Kapitel_Titel,"-.*", "")) %>% 
-  group_by(title,Kapitel_Titel,duration,date) %>% 
-  summarize(Kapitel_länge = sum(Kapitel_länge),
-            Kapitel_länge = as.duration(Kapitel_länge)) %>% 
-  ungroup() %>% 
+         Kapitel_Titel = str_replace(Kapitel_Titel,"-.*", "")) %>% # Achtung!!! Zerhackt auch richtige Title mit Bindestrick!
   
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCovid\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCorana\\b", "Corona")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCorona Update\\b", "Corona")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCoronavirus\\b", "Corona")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfstoff\\b", "Corona")) %>%
-  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpf\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfung\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfen\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfpflicht\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImmunitätsausweis\\b", "Corona")) %>%
+  #mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\b\\b", "Corona")) %>%
+
+
+
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bFeedback und Korrekturen\\b", "Feedback")) %>%
   
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimawandel\\b", "Klima")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimapaket\\b", "Klima")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimaerhitzung\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimagipfel\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimaschutz\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlima 1\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlima 2\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimagesetze 2\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimakabinett 2\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimakonferenz\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimakabinett\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bDeutsche Klimapolitik\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimaschutzplan\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimagesetz\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimagesetze\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bEEG\\b", "Klima")) %>%
+
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bFlüchtlingshilfe\\b", "Geflüchtete")) %>%
   
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bJulian Assange\\b", "Geflüchtete")) %>%
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bPolizeigewalt\\b", "Polizei")) %>%
+  
+
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bUS\\b", "USA")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bTrump\\b", "USA")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bTrump vs Twitter\\b", "USA")) %>%
 
   
-  mutate(Kapitel_Titel = ifelse(Kapitel_Titel == "Corana","Corona",Kapitel_Titel),
-         Kapitel_Titel = as_factor(Kapitel_Titel)) %>% 
   
-  arrange(desc(date))
+  group_by(title,Kapitel_Titel,duration,date) %>% 
+  summarize(Kapitel_länge = sum(Kapitel_länge),
+            Kapitel_länge = as.duration(Kapitel_länge)) %>% 
+  ungroup() %>% 
+  mutate(Kapitel_Titel = as_factor(Kapitel_Titel)) %>% 
+  arrange(desc(date)) 
 
+LDN_Kapitel %>%
+  filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview")) %>%
+  filter(date >= "2020-01-01") %>%
+  count(Kapitel_Titel,sort = TRUE) %>%
+  view()
 
 LDN_Kapitel %>% 
   filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview")) %>% 
@@ -322,9 +355,9 @@ LDN_Kapitel %>%
   head(10) %>% 
   ggplot(aes(Kapitel_Titel,Kapitel_länge))+
   geom_col(fill = Farbe_LND_1)+
-  scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800,50400,54000),
-               labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00"),
-               limits = c(0,57000), 
+  scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800,50400,54000,57600),
+               labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00"),
+               limits = c(0,62000), 
                expand = c(0,NA))+
   coord_flip()+
   
@@ -688,4 +721,7 @@ LDN_Jahre %>%
 ```
 
 
+```{r include=FALSE}
+beepr::beep()
+```
 
