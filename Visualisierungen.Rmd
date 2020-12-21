@@ -357,7 +357,7 @@ LDN_Kapitel %>%
   geom_col(fill = Farbe_LND_1)+
   scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800,50400,54000,57600),
                labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00"),
-               limits = c(0,62000), 
+               limits = c(0,60000), 
                expand = c(0,NA))+
   coord_flip()+
   
@@ -387,6 +387,59 @@ LDN_Kapitel %>%
   theme(
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+LDN_Kapitel %>%
+  filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview","Sponsor","Hinweis","Feedback")) %>%
+  cross_by_periods(periods = c("day", "week", "month", "quarter", "year")) %>% 
+  filter(date >= "2020-01-01",
+         period == "month") %>%
+  group_by(period,Kapitel_Titel,date) %>% 
+  summarize(Kapitel_länge = sum(Kapitel_länge)) %>% 
+  group_by(Kapitel_Titel) %>% 
+  mutate(n = n()) %>% 
+  filter(n >= 3) %>% 
+  ungroup() %>% 
+  mutate(Kapitel_Titel = fct_reorder(Kapitel_Titel,n)) %>% 
+  ggplot(aes(date,Kapitel_Titel,size = Kapitel_länge, alpha = Kapitel_länge))+
+  geom_point(color = Farbe_LND_1)+
+  scale_size_continuous(range = c(2, 15))+
+  scale_alpha_continuous(range = c(1, 1))+
+  scale_x_date(date_labels = "%b",date_breaks = "1 months")+
+  theme(
+    legend.position = "none")+
+  
+    labs(
+    title = "Top 6 Kapitel in 2020 - Monat",
+       subtitle = 
+        paste("Wie Lange wurde in Monat über eine Folge gesprochen"),
+    caption = "*Ohne Spezial-Folgen ",
+       x = "",
+       y = "")+ 
+  
+  
+    theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "#EBEBEB"),
+    plot.background = element_rect(fill = "#EBEBEB"),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.line.y.left = element_blank(),
+#    axis.line.x.bottom = element_blank(),
+#    axis.text.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    axis.ticks = element_line(color = "#e0e0e0"),
+    text = element_text(family = "Futura-Bold"),
+    plot.title = element_text(size = 22),
+    plot.title.position = "plot",    
+    plot.subtitle = element_text(size = 12, family = "FuturaBT-Medium"),
+    axis.line = element_line(color = "#e0e0e0"))+
+  theme(
+    plot.title = element_markdown(lineheight = 1.1),
+    plot.subtitle = element_markdown(lineheight = 1.1))
+
 ```
 
 
@@ -501,6 +554,7 @@ LDN_Interview %>%
   theme(
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
+
 
 ```
 
