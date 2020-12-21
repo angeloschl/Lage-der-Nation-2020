@@ -105,6 +105,9 @@ Anzahl_Spezial <- LDN %>%
 
 ```
 
+# Allgemeines
+Für die Auswertung wurde der öffentliche RRS-Feed der Lage der Nation genutzt.
+In dieser Auswertung wurde sich nur auf das Jahr 2020 konzentriert. 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig1, fig.height = 3, fig.width = 8}
 LDN_Jahr <- LDN %>%
@@ -231,7 +234,10 @@ LDN %>%
 #font_add("Futura2",regular = "futura light bt.ttf",bold = "Futura Bold font.ttf",italic = "Futura Light Italic font.ttf", bolditalic = "Futura Heavy Italic font.ttf")
 ```
 
+# Top 10 Kapitel in 2020 - Häufigkeit
 
+Da die Kapitel oft unterschiedliche genannt wurden, aber die Inhalte gleich sind, wurden sie manuell zusammengefasst. Hier das Beispiel <b>"Corona"</b>: 
+Covid, Corana, Corona Update, Coronavirus, Impfstoff, Impfung, Impfen, Impfpflicht, Immunitätsausweis <p>
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
 LDN_Kapitel <- LDN %>% 
   as_tibble() %>% 
@@ -248,7 +254,6 @@ LDN_Kapitel <- LDN %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfen\\b", "Corona")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfpflicht\\b", "Corona")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImmunitätsausweis\\b", "Corona")) %>%
-  #mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\b\\b", "Corona")) %>%
 
 
 
@@ -405,16 +410,16 @@ LDN_Kapitel %>%
   mutate(Kapitel_Titel = fct_reorder(Kapitel_Titel,n)) %>% 
   ggplot(aes(date,Kapitel_Titel,size = Kapitel_länge, alpha = Kapitel_länge))+
   geom_point(color = Farbe_LND_1)+
-  scale_size_continuous(range = c(2, 15))+
+  scale_size_continuous(range = c(2, 16))+
   scale_alpha_continuous(range = c(1, 1))+
   scale_x_date(date_labels = "%b",date_breaks = "1 months")+
   theme(
     legend.position = "none")+
   
     labs(
-    title = "Top 6 Kapitel in 2020 - Monat",
+    title = "Top 6 Kapitel in 2020 - Pro Monat",
        subtitle = 
-        paste("Wie Lange wurde in Monat über eine Folge gesprochen"),
+        paste("Die Dicke der Kriese beschreibt die Länge der Themen pro Monat"),
     caption = "*Ohne Spezial-Folgen ",
        x = "",
        y = "")+ 
@@ -776,6 +781,6 @@ LDN_Jahre %>%
 
 
 ```{r include=FALSE}
-beepr::beep()
+#beepr::beep()
 ```
 
