@@ -1,9 +1,6 @@
 # Lage Der Nation 2020 Podcast Visualisieren
 # Meta Daten werden aus RSS-Feed gesammelt
 
-
-
-
 # Libraries Laden ---------------------------------------------------------
 
 
@@ -42,7 +39,7 @@ LDN_list <- xmlToList(LDN_xml)
 meta_episonden_lst <- c("title","subtitle","link","pubDate","duration")
 Var_Namen <- c(meta_episonden_lst,"Kapitel_Start","Kapitel_Titel")
 
-meta_episooden_kapitel_lst <- c("chapter.start","chapter.title") #Löschen ? 
+meta_episooden_kapitel_lst <- c("chapter.start","chapter.title") # Löschen ? 
 
 # Leere df's für die for schleife
 LDN_df2 <- Var_Namen %>% 
@@ -52,7 +49,7 @@ LDN_df2 <- Var_Namen %>%
 LDN_df <- Var_Namen %>% 
   purrr::map_dfc(setNames, object = list(logical()))
 
-for (folge in 23:length(LDN_list[["channel"]])) { #Erste Folge starten bei ab Listenplatz 23 
+for (folge in 23:length(LDN_list[["channel"]])) { # Erste Folge starten bei ab Listenplatz 23 
   LDN_df2 <-
     Var_Namen %>%
     purrr::map_dfc(setNames, object = list(c("")))
@@ -91,7 +88,7 @@ for (folge in 23:length(LDN_list[["channel"]])) { #Erste Folge starten bei ab Li
 
 # fehlende Daten manuel ergänzen ------------------------------------------
 
-# Länge der Folegen
+# Länge der Folgen manuell Nachtragen.
 
 LDN_df_angepasst <- LDN_df %>% 
   mutate(duration = ifelse(title == "LdN183 Corona-Update, Bundestag remote, AfD-Streit, UN-Klimakonferenz" ,
