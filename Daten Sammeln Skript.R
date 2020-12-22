@@ -16,9 +16,8 @@ library(xslt)
 library(plotly)
 library(tidytext)
 
-theme_set(theme_light())
 
-rm(list = ls())  #Loescht alle Vorherigen Variablen und Daten aus R
+rm(list = ls())  # Löscht alle Vorherigen Variablen und Daten aus R
 
 
 # RSS - Feed laden --------------------------------------------------------
@@ -82,11 +81,7 @@ for (folge in 23:length(LDN_list[["channel"]])) { # Erste Folge starten bei ab L
 }
 
 
-
-
-
-
-# fehlende Daten manuel ergänzen ------------------------------------------
+# fehlende Daten manuell ergänzen ------------------------------------------
 
 # Länge der Folgen manuell Nachtragen.
 
@@ -132,7 +127,8 @@ LDN_df_angepasst <- LDN_df %>%
 LDN_df_angepasst %>% 
   group_by(title) %>% 
   summarize(duration = last(duration)) %>% 
-  filter(duration == "00:00:00") 
+  filter(duration == "00:00:00") %>% 
+  print()
 
 
 
@@ -155,7 +151,7 @@ LDN_xml_df <- data.frame(cbind(title,Shownotes))
 
 
 LDN_xml_df <- as_tibble(LDN_xml_df) %>% 
-  unnest(title,Shownotes)
+  unnest(c(title,Shownotes))
 #  mutate(title = as.character(title)) %>%
 #  mutate(Shownotes = as.character(Shownotes))
 
