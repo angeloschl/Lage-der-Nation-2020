@@ -6,7 +6,7 @@
 	<title>Lage der Nation - der Politik-Podcast aus Berlin</title>
 	<link>https://lagedernation.org</link>
 	<description><![CDATA[Mit Philip Banse und Ulf Buermeyer]]></description>
-	<lastBuildDate>Fri, 18 Dec 2020 21:34:09 +0000</lastBuildDate>
+	<lastBuildDate>Tue, 22 Dec 2020 21:42:07 +0000</lastBuildDate>
 	
 <image><url>https://lagedernation.org/wp-content/blogs.dir/10/files/2020/06/apple_podcast_artwork_reverse.png</url><title>Lage der Nation - der Politik-Podcast aus Berlin</title><link>https://lagedernation.org</link></image>
 <atom:link rel="self" type="application/rss+xml" title="Lage der Nation - der Politik-Podcast aus Berlin (Lage der Nation (mp3))" href="https://lagedernation.org/feed/mp3/" />
@@ -33,6 +33,118 @@
 	
 	<atom:link rel="me" href="https://podcasts.apple.com/podcast/id1092957894" />
 
+	
+	<item>
+        <title>LdN221 Corona-Update, USA vs. Facebook, EU Digital Services Act, Brexit, Navalny</title>
+		<link>https://lagedernation.org/2020/12/22/ldn221-corona-update-usa-vs-facebook-eu-digital-services-act-brexit-navalny/</link>
+		<pubDate>Tue, 22 Dec 2020 21:42:06 +0000</pubDate>
+		<guid isPermaLink="false">podlove-2020-12-21t14:53:10+00:00-220ebaa18242df2</guid>
+    	<description><![CDATA[Wir wünschen euch frohe Weihnachten bevor wir uns am Ende des Jahres noch mit einem besonderen Jahresrückblick melden!]]></description>
+		<atom:link rel="http://podlove.org/deep-link" href="https://lagedernation.org/2020/12/22/ldn221-corona-update-usa-vs-facebook-eu-digital-services-act-brexit-navalny/#" />
+		
+<enclosure url="https://dts.podtrac.com/redirect.mp3/cdn.kuechenstud.io/lagedernation/LdN221.mp3?ptm_source=feed&amp;ptm_context=mp3&amp;ptm_file=LdN221.mp3" length="58120089" type="audio/mpeg"/>
+
+		<itunes:duration>01:17:48</itunes:duration>
+		<itunes:author>Philip Banse &amp;amp; Ulf Buermeyer</itunes:author>
+		<itunes:subtitle>Wir wünschen euch frohe Weihnachten bevor wir uns am Ende des Jahres noch mit einem besonderen Jahresrückblick melden!</itunes:subtitle>
+		<itunes:title>Corona-Update, USA vs. Facebook, EU Digital Services Act, Brexit, Navalny</itunes:title>
+		<itunes:episode>221</itunes:episode>
+		<itunes:episodeType>full</itunes:episodeType>
+		
+		
+		<content:encoded><![CDATA[<p><strong>Begrüßung&nbsp;</strong></p>
+<ul>
+<li><a href="https://apps.apple.com/app/id1241524252">‎MapAlarmNG</a> (App Store)</li>
+</ul>
+<p><strong>Corona-Update</strong>&nbsp;</p>
+<ul>
+<li><a href="https://www.deutschlandfunk.de/coronavirus-mutation-in-grossbritannien-virologe-drosten.694.de.html?dram:article_id=489655">Coronavirus-Mutation in Großbritannien &#8211; Virologe Drosten: Informationslage &#8220;noch lückenhaft&#8221;</a> (Deutschlandfunk)</li>
+<li><a href="https://www.gov.uk/government/publications/investigation-of-novel-sars-cov-2-variant-variant-of-concern-20201201">Investigation of novel SARS-COV-2 variant: Variant of Concern 202012/01</a> (GOV.UK)</li>
+<li><a href="https://www.tagesschau.de/inland/corona-mutation-faq-101.html">FAQ: Was über die Corona-Mutation bekannt ist</a> (tagesschau.de)</li>
+<li><a href="https://srv.deutschlandradio.de/dlf-audiothek-audio-teilen.3265.de.html?mdm:audio_id=888564">Coronavirus-Mutation in Großbritannien &#8211; Virologe Drosten: Informationslage &#8220;noch lückenhaft&#8221;</a> (Deutschlandfunk)</li>
+<li><a href="http://sz.de/1.5153967">Mutiertes Corona-Virus beunruhigt Behörden</a> (Süddeutsche.de)</li>
+<li><a href="https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/conditionsanddiseases/bulletins/coronaviruscovid19infectionsurveypilot/18december2020">Coronavirus (COVID-19) Infection Survey, UK &#8211; Office for National Statistics</a> (ons.gov.uk)</li>
+<li><a href="https://www.dw.com/en/anti-vaxxers-should-forgo-ventilators-german-doctor-says/a-55996805">Anti-vaxxers should forgo ventilators, German doctor says</a> (DW.COM)</li>
+<li><a href="https://www.spiegel.de/politik/corona-mutation-in-grossbritannien-europa-schottet-sich-ab-a-c5601d78-e736-4545-aeee-a6bec31623d0">Angst vor mutiertem Coronavirus aus Großbritannien: Der Kontinent schottet sich ab</a> (spiegel.de)</li>
+<li><a href="https://www.zdf.de/nachrichten/panorama/corona-virus-mutation-grossbritannien-wissen-100.html">Coronavirus-Mutation: Was wir bisher wissen</a> (ZDFheute)</li>
+<li><a href="https://www.spiegel.de/wissenschaft/medizin/corona-hochrangige-wissenschaftler-fordern-richtwert-von-maximal-zehn-neuinfektionen-fuer-europa-a-588598e8-7533-4193-b4cd-c9c01f7aeaf8">Corona: Hochrangige Wissenschaftler fordern Richtwert von maximal zehn Neuinfektionen für Europa</a> (spiegel.de)</li>
+<li><a href="https://www.theguardian.com/world/2020/dec/20/belgium-italy-and-netherlands-ban-flights-from-uk-over-new-covid-strain?CMP=Share_iOSApp_Other">Several European countries ban flights from UK over new Covid strain</a> (the Guardian)</li>
+<li><a href="https://www.spiegel.de/wissenschaft/medizin/corona-mutationen-das-virus-hat-sich-an-den-menschen-angepasst-a-ea36d69c-1c82-43a4-bfd3-1f85599ae4a9?sara_ecid=soci_upd_KsBF0AFjflf0DZCxpPYDCQgO1dEMph">Corona-Mutationen: »Das Virus hat sich an den Menschen angepasst«</a> (spiegel.de)</li>
+<li><a href="https://twitter.com/c_drosten/status/1340568876258635776?s=21">Christian Drosten</a> (twitter)</li>
+<li><a href="https://virological.org/t/preliminary-genomic-characterisation-of-an-emergent-sars-cov-2-lineage-in-the-uk-defined-by-a-novel-set-of-spike-mutations/563">Preliminary genomic characterisation of an emergent SARS-CoV-2 lineage in the UK defined by a novel set of spike mutations</a> (Virological)</li>
+<li><a href="https://www.spiegel.de/politik/deutschland/deutschland-und-die-eu-haben-zu-wemig-a-00000000-0002-0001-0000-000174544038">Corona-Impfstoff: Deutschland und die EU haben zu wenig bestellt</a> (spiegel.de)</li>
+<li><a href="https://www.sueddeutsche.de/gesundheit/coronavirus-inzidenz-rki-fallzahlen-1.5154797">Corona: RKI veröffentlicht oft zu niedrige Inzidenzwerte</a> (Süddeutsche.de)</li>
+<li><a href="https://www.gov.uk/government/publications/investigation-of-novel-sars-cov-2-variant-variant-of-concern-20201201">Investigation of novel SARS-COV-2 variant: Variant of Concern 202012/01</a> (GOV.UK)</li>
+<li><a href="https://twitter.com/c_drosten/status/1341155746575245313?s=12">Christian Drosten </a>&nbsp;(twitter)</li>
+</ul>
+<p><strong>USA vs. Facebook&nbsp;</strong></p>
+<ul>
+<li><a href="https://overcast.fm/+LHyff085Q">Should Facebook Be Broken Up?</a> (the Daily)</li>
+<li><a href="https://stratechery.com/2020/united-states-v-google/">United States v. Google</a> (Stratechery by Ben Thompson)</li>
+<li><a href="https://blog.google/outreach-initiatives/public-policy/response-doj/">A deeply flawed lawsuit that would do nothing to help consumers</a> (Google)</li>
+<li><a href="https://www.sueddeutsche.de/wirtschaft/google-monopol-gefahr-usa-1.5085354">Tech-Riesen: USA leiten Monopolklage gegen Google ein</a> (Süddeutsche.de)</li>
+<li><a href="https://www.sueddeutsche.de/wirtschaft/internet-kartell-klage-gegen-google-1.5151475">Kartell-Klage gegen Google</a> (Süddeutsche.de)</li>
+<li><a href="https://www.sueddeutsche.de/digital/facebook-kartell-datenschutz-1.5143267">Facebook: Ein mieser Tag für Mark Zuckerberg</a> (Süddeutsche.de)</li>
+<li><a href="https://www.sueddeutsche.de/wirtschaft/facebook-zuckerberg-monopol-klagen-1.5142566">Klageflut gegen Facebook</a> (Süddeutsche.de)</li>
+<li><a href="https://www.sueddeutsche.de/digital/google-facebook-klagen-regulierung-1.5152755">Der wilde Plattformkapitalismus geht zu Ende</a> (Süddeutsche.de)</li>
+</ul>
+<p><strong>EU Digital Services Act</strong></p>
+<ul>
+<li><a href="https://www.heise.de/news/EU-Einigung-Plattformen-muessen-Terrorpropaganda-umgehend-loeschen-4986300.html">EU-Einigung: Plattformen müssen Terrorpropaganda umgehend löschen</a> (heise online)</li>
+<li><a href="https://www.heise.de/news/Digital-Services-Act-EU-Kommission-will-Ampeln-fuers-Netz-etablieren-4990856.html?seite=all">Digital Services Act: EU-Kommission will Ampeln fürs Netz etablieren</a> (heise online)</li>
+<li><a href="https://www.heise.de/news/EU-Digital-Paket-Verleger-vermissen-konkretere-Vorschlaege-4991048.html">EU-Digital-Pakt: Verleger vermissen konkretere Vorschläge</a> (heise online)</li>
+<li><a href="https://www.heise.de/news/Digital-Services-Act-Rechtliches-Betriebssystem-gegen-das-wilde-Netz-4991003.html">Digital Services Act: Rechtliches Betriebssystem gegen das wilde Netz</a> (heise online)</li>
+</ul>
+<p><strong>Brexit</strong>&nbsp;</p>
+<ul>
+<li><a href="https://www.politico.eu/article/brexit-talks-set-to-miss-european-parliament-deadline/">Brexit talks set to miss European Parliament deadline</a> (POLITICO)</li>
+<li><a href="https://www.politico.eu/article/opinion-heres-a-compromise-on-fish-post-brexit-and-both-sides-would-be-wise-to-take-it/">Here’s a Brexit compromise on fish — and both sides would be wise to take it</a> (POLITICO)</li>
+<li><a href="https://www.bloomberg.com/news/articles/2020-12-21/johnson-makes-last-ditch-push-for-brexit-deal-with-offer-on-fish">Boris Johnson Makes Last-Ditch Push for Brexit Deal With Offer on Fish</a> (Bloomberg.com)</li>
+<li><a href="https://www.politico.eu/article/boris-johnson-ursula-von-der-leyen-secret-phone-call/">Boris Johnson and Ursula von der Leyen spoke Monday to discuss Brexit fish compromise</a> (POLITICO)</li>
+<li><a href="https://www.politico.eu/article/eu-brexit-talks-uk-christmas-deadline-deal/">(Not another) EU Brexit deadline</a> (POLITICO)</li>
+<li><a href="http://www.bbc.co.uk/comedy/yesminister/">BBC &#8211; Comedy &#8211; Yes Minister</a> (bbc.co.uk)</li>
+<li><a href="https://en.wikipedia.org/wiki/Yes_Minister">Yes Minister</a> (Wikipedia)</li>
+</ul>
+<p><strong>Navalny&nbsp;</strong></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ibqiet6Bg38&amp;feature=emb_logo">Я позвонил своему убийце. Он признался</a> (YouTube)</li>
+<li><a href="https://nawalny.com/article/6447">Так блэт, Я позвонил своему убийце. Он во всем признался</a> (nawalny.com)</li>
+</ul>
+<p><strong style="font-size: inherit">Bilder&nbsp;</strong></p>
+<ul id="block-f4506abb-9ca2-4d2f-8752-171635b57968" class="block-editor-block-list__block wp-block is-selected rich-text block-editor-rich-text__editable is-hovered wp-block" role="textbox" aria-label="Schreibe eine Liste…" data-block="f4506abb-9ca2-4d2f-8752-171635b57968" data-type="core/list" data-title="Liste">
+<li><a href="https://www.zdf.de/nachrichten/panorama/corona-virus-mutation-grossbritannien-wissen-100.html">Ansprache Boris Johnson&nbsp;</a></li>
+<li><a href="https://www.rki.de/DE/Content/InfAZ/N/Neuartiges_Coronavirus/Situationsberichte/Dez_2020/2020-12-21-de.pdf?__blob=publicationFile" data-rich-text-format-boundary="true">Täglicher Lagebericht des RKI zur Coronavirus-Krankheit-2019 (COVID-19), 21.12.2020</a> (rki.de)</li>
+<li>Google, Photo by <a href="https://unsplash.com/@solenfeyissa?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Solen Feyissa</a> on <a href="https://unsplash.com/s/photos/google?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></li>
+<li><a href="https://www.youtube.com/watch?v=ibqiet6Bg38&amp;feature=emb_logo">Я позвонил своему убийце. Он признался</a> (YouTube)</li>
+</ul>
+
+
+<p><strong>Hausmitteilungen&nbsp;</strong></p>
+
+
+
+<ul><li>Wir empfehlen, die Lage mit <a rel="noreferrer noopener" href="https://lagedernation.org/apps/" target="_blank">einer dieser Podcast-Apps</a> zu hören, damit alle Features korrekt funktionieren.</li><li><a href="https://lagedernation.org/spenden/">Spenden per Überweisung</a></li><li><a href="Bank://singlepaymentsepa?name=PHILIP%20BANSE&amp;reason=Lage%20der%20Nation%20-%20Spende&amp;iban=DE39700222000073484510&amp;bic=FDDODEMMXXX&amp;amount=9%2C99">Spenden: Banking-Program mit BezahlCode-Standard</a></li><li><a href="https://www.paypal.me/lagedernation">Spenden: Paypal</a></li><li><a rel="noreferrer noopener" href="https://shop.spreadshirt.de/lagedernation" target="_blank">Lage-Shop</a></li><li><a rel="noreferrer noopener" href="https://itunes.apple.com/de/podcast/lage-der-nation/id1092957894?l=en" target="_blank">&#8220;Lage der Nation&#8221; bei iTunes bewerten</a></li><li><a rel="noreferrer noopener" href="https://www.youtube.com/playlist?list=PLBfAMei5WNi86C5cXn627rkXaXqQBbQrB" target="_blank">&#8220;Lage der Nation&#8221; bei Youtube</a></li><li><a rel="noreferrer noopener" href="https://www.facebook.com/lagenation/" target="_blank">&#8220;Lage der Nation&#8221; bei Facebook</a></li><li>&#8220;<a href="https://www.instagram.com/lagedernation/">Lage der Nation&#8221; bei Instagram&nbsp;</a></li><li><a rel="noreferrer noopener" href="https://twitter.com/lagenation" target="_blank">&#8220;Lage der Nation&#8221; bei Twitter</a></li><li><a rel="noreferrer noopener" href="https://de.m.wikipedia.org/wiki/Lage_der_Nation_(Podcast)" target="_blank">&#8220;Lage der Nation&#8221; in der Wikipedia</a></li></ul>
+]]></content:encoded><psc:chapters xmlns:psc="http://podlove.org/simple-chapters" version="1.2">
+  <psc:chapter start="00:00:00.000" title="Begr&#xFC;&#xDF;ung"/>
+  <psc:chapter start="00:00:45.524" title="Map Alarm: Neue Version"/>
+  <psc:chapter start="00:03:41.864" title="Corona: Zahlen und keine Entwarnung"/>
+  <psc:chapter start="00:05:38.718" title="Corona: Impfstoff in der EU zugelassen"/>
+  <psc:chapter start="00:13:07.477" title="Corona: Sars-Cov2-Mutationen machen Sorgen"/>
+  <psc:chapter start="00:20:57.956" title="Corona: Keine Beatmung f&#xFC;r Impf-Verweigerer?"/>
+  <psc:chapter start="00:21:38.888" title="Corona: Gottesdienste verbieten?"/>
+  <psc:chapter start="00:23:53.277" title="Corona: Was machen mit der Situation?"/>
+  <psc:chapter start="00:24:52.426" title="Corona: Was, wenn Oma sagt, sie d&#xFC;rfe ruhig krank werden?"/>
+  <psc:chapter start="00:27:08.764" title="Plattformen: Staaten vs Google/Facebook"/>
+  <psc:chapter start="00:46:08.273" title="EU: Pl&#xE4;ne f&#xFC;r Digital Services Act vorgestellt"/>
+  <psc:chapter start="00:49:31.952" title="Brexit: Streit um die Fische"/>
+  <psc:chapter start="00:59:20.675" title="Nawalny: Russland verh&#xE4;ngt Sanktionen gegen Deutschland und EU"/>
+  <psc:chapter start="01:14:49.578" title="Feedback: Werberichtlinie"/>
+  <psc:chapter start="01:16:23.136" title="Verabschiedung"/>
+</psc:chapters>
+<atom:contributor><atom:name>Ulf Buermeyer</atom:name></atom:contributor>
+
+<atom:contributor><atom:name>Philip Banse</atom:name></atom:contributor>
+	</item>
 	
 	<item>
         <title>LdN220 Corona: Lockdown, Triage, Impfstoff, EEG, Virtueller Klimagipfel, Software der Gesundheitsämter</title>
