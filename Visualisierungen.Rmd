@@ -6,6 +6,7 @@ output:
   html_document:
     theme: readable
     css: style.css
+    keep_md: TRUE
  #   toc: true
  #   toc_float: true
 editor_options: 
@@ -132,7 +133,7 @@ Anzahl_Spezial <- LDN %>%
 
 # Abbildungen 
 ## Anzahl Folgen
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig1, fig.height = 3, fig.width = 9}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, dpi=300, fig.height = 3, fig.width = 9}
 LDN_Jahr <- LDN %>%
   cross_by_periods(periods = c("day", "week", "month", "quarter", "year")) %>% 
   filter(date >= "2020-01-01",
@@ -191,7 +192,7 @@ ggsave("plots/Anzahl der Folgen.png",  width = 9, height = 3)
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig.height = 3, fig.width = 9}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, dpi=300, fig.height = 3, fig.width = 9}
 LDN_LängeDurschnitt <- LDN %>%
   filter(date >= "2020-01-01") %>%
   group_by(title, duration, date,Folge_Art) %>% 
@@ -268,7 +269,7 @@ Da die Kapitel oft unterschiedlich genannt wurden, aber die Inhalte gleich sind,
 Covid, Corana, Corona Update, Coronavirus, Impfstoff, Impfung, Impfen, Impfpflicht, Immunitätsausweis <p>
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, dpi=300, fig.width = 9}
 LDN_Kapitel <- LDN %>% 
   as_tibble() %>% 
   mutate(Kapitel_Titel = str_replace(Kapitel_Titel,":.*", "")) %>% # Achtung!!! Zerhackt auch richtige Title mit Bindestrick!
@@ -403,7 +404,7 @@ ggsave("plots/Top 10 Kapitel in 2020 - Häufigkeit.png",  width = 9, height = 5)
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, dpi=300, fig.width = 9}
 LDN_Kapitel %>%   
   filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview")) %>% 
   filter(date >= "2020-01-01") %>%
@@ -457,7 +458,7 @@ ggsave("plots/Top 10 Kapitel in 2020 - Länge.png",  width = 9, height = 5)
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9, fig.height = 5}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, dpi=300, fig.width = 9, fig.height = 5}
 LDN_Kapitel %>%
   filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview","Sponsor","Hinweis","Feedback")) %>%
   cross_by_periods(periods = c("day", "week", "month", "quarter", "year")) %>% 
@@ -575,7 +576,7 @@ LDN_Intervew_Geschlecht <- rbind(Fr,Mä)
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig.height = 3, fig.width = 9}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, dpi=300,fig.height = 3, fig.width = 9}
 
 LDN_InterviewPartner <- LDN_Interview %>% 
   filter(Interview == 1,
@@ -633,7 +634,7 @@ ggsave("plots/Interviewgäste in 2020.png",  width = 9, height = 3)
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, dpi=300, fig.width = 9}
 my.max <- function(x) ifelse( !all(is.na(x)), max(x, na.rm=T), 0)
 
 LDN_Interview %>%
@@ -679,7 +680,7 @@ ggsave("plots/Veröffentlichung nach Wochentagen in 2020.png",  width = 9, heigh
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, dpi=300, fig.width = 9}
 LDN_Quellen <- LDN %>%
   filter(date >= "2020-01-01",
          Folge_Art == "Folge") %>%
