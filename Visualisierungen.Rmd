@@ -32,6 +32,7 @@ library(extrafont)
 library(showtext)
 library(glue)
 library(tidytext)
+library(ggplot2)
 ```
 
 # Einleitung
@@ -185,6 +186,8 @@ LDN_Jahr %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
+ggsave("plots/Anzahl der Folgen.png",  width = 9, height = 3)
+
 ```
 
 
@@ -251,6 +254,9 @@ LDN %>%
   theme(
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
+
+ggsave("plots/Länge der Folgen in 2020.png",  width = 9, height = 3)
+
 
 #font_add("LemonMilk",regular = "LemonMilk.otf",bold = "LemonMilkbold.otf",italic = "LemonMilkitalic.otf", bolditalic = "LemonMilkbolditalic.otf")
 #font_add("Futura2",regular = "futura light bt.ttf",bold = "Futura Bold font.ttf",italic = "Futura Light Italic font.ttf", bolditalic = "Futura Heavy Italic font.ttf")
@@ -392,6 +398,7 @@ b <- LDN_Kapitel %>% filter(date >= "2020-01-01") %>% select(title,date, Kapitel
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
+ggsave("plots/Top 10 Kapitel in 2020 - Häufigkeit.png",  width = 9, height = 5)
 
 ```
 
@@ -443,6 +450,10 @@ LDN_Kapitel %>%
   theme(
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
+
+ggsave("plots/Top 10 Kapitel in 2020 - Länge.png",  width = 9, height = 5)
+
+
 ```
 
 
@@ -471,7 +482,7 @@ LDN_Kapitel %>%
     legend.position = "none")+
   
     labs(
-    title = "Top 7 Kapitel in 2020 - Pro Monat",
+    title = "Top 8 Kapitel in 2020 - Pro Monat",
        subtitle = 
         paste("Die Dicke der Kreise beschreibt die relative Länge der Themen pro Monat"),
     caption = "*Ohne Spezial-Folgen **Ohne die Kapitel: Begrüßung, Verabschiedung, Interview, Sponsor, Hinweis, Feedback ",
@@ -498,6 +509,8 @@ LDN_Kapitel %>%
   theme(
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
+
+ggsave("plots/Top 8 Kapitel in 2020 - Pro Monat.png",  width = 9, height = 5)
 
 ```
 
@@ -614,6 +627,8 @@ LDN_Interview %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
+ggsave("plots/Interviewgäste in 2020.png",  width = 9, height = 3)
+
 
 ```
 
@@ -657,6 +672,9 @@ LDN_Interview %>%
         axis.line = element_line(color = "#e0e0e0"))+
   theme(plot.title = element_markdown(lineheight = 1.1),
         plot.subtitle = element_markdown(lineheight = 1.1))
+
+ggsave("plots/Veröffentlichung nach Wochentagen in 2020.png",  width = 9, height = 5)
+
   
 ```
 
@@ -785,7 +803,7 @@ LDN_Quellen_Plot %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
-
+ggsave("plots/Top 10 Quellen 2020 - Häufigkeit.png",  width = 9, height = 5)
 
 ```
 
