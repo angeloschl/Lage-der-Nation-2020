@@ -1,6 +1,6 @@
 /* Whole document: */
 body{
-  font-family: FuturaBT-Medium;
+/*  font-family: FuturaBT-Medium; */
   font-size: 14pt;
   margin-left: auto;
   margin-right: auto;
@@ -11,10 +11,12 @@ body .main-container {
 max-width: 800px;
 }
 
-/* Headers */
+/* Headers 
 h1{
   font-size: 24pt;
 }
 h2,h3,h4,h5,h6{
   font-size: 18pt;
 }
+
+*/
