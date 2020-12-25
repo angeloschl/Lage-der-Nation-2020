@@ -1,11 +1,19 @@
 ---
-title: "Lage Der Nation - 2020"
-author: "Angelo Schleussner"
+title: "Lage der Nation - 2020"
+author: "Angelo Schleussner - angelo.schleussner@gmx.de"
 date: "`r format(Sys.time(), '%d.%m.%Y')`"
-output: html_document
+output:
+  html_document:
+    theme: readable
+    css: style.css
+ #   toc: true
+ #   toc_float: true
 editor_options: 
   chunk_output_type: console
 ---
+
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -25,6 +33,22 @@ library(showtext)
 library(glue)
 library(tidytext)
 ```
+
+# Einleitung
+In den folgenden Abbildungen habe ich das Podcastjahr 2020 der Lage der Nation konzentriert auf ein paar Aspekte veranschaulicht. Dabei habe ich zuerst kein konkretes Ziel verfolgt, sondern wollte die Zeit des Lockdowns etwas füllen. Herausgekommen sind aber ein paar spannende Erkenntnisse. Zum Beispiel, dass ich fast drei volle Tage in diesem Jahr die Lage gehört habe und dabei das Thema Corona um die 16 Stunden eingenommen hat. Oder das die Top-Quellen Süddeutsche, Spiegel und Twitter sind.
+
+
+Als Datengrundlage habe ich den öffentlichen RSS-Feed der Lage der Nation genutzt (https://feeds.lagedernation.org/feeds/ldn-mp3.xml). Ich habe also nur Metadaten ausgewertet und bin nicht inhaltlich die einzelnen Folgen durchgegangen.
+
+Wichtig ist mir zu sagen, dass ich keine Bewertung wie richtig - falsch oder zu viel - zu wenig mit dieser Auswertung machen möchte, sondern lediglich beschreiben will. Da ich es aber so interessant finde, möchte ich es gerne, auch in Rücksprache mit dem Lage-Team, hier im Forum teilen.
+
+Ich gespannt, was ihr dazu sagt, ob ihr noch weiter Ideen für Abbildungen und Auswertungen habt und ob euch Fehler auffallen, die ich nicht gefunden habe. 
+Den Code habe ich bei GitHub geteilt und könnt ihr hier einsehen: https://github.com/angeloschl/Lage-der-Nation-2020. Genutzt habe ich die Programmiersprache R und RMarkdown.
+
+Ich habe mir die größte Mühe gemacht sauber zu arbeiten. Da ich programmieren und R aber nie für solche Zwecke gelernt habe und auch nur gelegentlich auf eine anderen Art und Weise im beruflichen Kontext nutze, bitte ich um Rücksicht bei Fehlern und nicht Einhaltung fundamentaler Regeln (sollte es diese Geben). Es ist mein erstes Projekt dieser Art und Größe. Ich wollte es nutzen, um meine Fertigkeiten etwas zu verbessern, neue Dinge zu lernen und einfach ein bisschen Spaß dabei zu haben. Über Feedback und Anregungen freue ich mich sehr.
+
+# Vereinfachung
+
 
 
 ```{r include=FALSE}
@@ -105,11 +129,9 @@ Anzahl_Spezial <- LDN %>%
 
 ```
 
-# Allgemeines
-Für die Auswertung wurde der öffentliche RRS-Feed der Lage der Nation genutzt.
-In dieser Auswertung wurde sich nur auf das Jahr 2020 konzentriert. 
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig1, fig.height = 3, fig.width = 8}
+# Abbildungen 
+## Anzahl Folgen
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig1, fig.height = 3, fig.width = 9}
 LDN_Jahr <- LDN %>%
   cross_by_periods(periods = c("day", "week", "month", "quarter", "year")) %>% 
   filter(date >= "2020-01-01",
@@ -166,7 +188,7 @@ LDN_Jahr %>%
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig.height = 3, fig.width = 8}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig.height = 3, fig.width = 9}
 LDN_LängeDurschnitt <- LDN %>%
   filter(date >= "2020-01-01") %>%
   group_by(title, duration, date,Folge_Art) %>% 
@@ -234,59 +256,83 @@ LDN %>%
 #font_add("Futura2",regular = "futura light bt.ttf",bold = "Futura Bold font.ttf",italic = "Futura Light Italic font.ttf", bolditalic = "Futura Heavy Italic font.ttf")
 ```
 
-# Top 10 Kapitel in 2020 - Häufigkeit
+## Top 10 Kapitel in 2020 - Häufigkeit
 
-Da die Kapitel oft unterschiedliche genannt wurden, aber die Inhalte gleich sind, wurden sie manuell zusammengefasst. Hier das Beispiel <b>"Corona"</b>: 
+Da die Kapitel oft unterschiedlich genannt wurden, aber die Inhalte gleich sind, wurden sie logisch zusammengefasst. <p>Hier am Beispiel das Kapitel <b>Corona</b> =
 Covid, Corana, Corona Update, Coronavirus, Impfstoff, Impfung, Impfen, Impfpflicht, Immunitätsausweis <p>
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9}
 LDN_Kapitel <- LDN %>% 
   as_tibble() %>% 
-  mutate(Kapitel_Titel = str_replace(Kapitel_Titel,":.*", ""),
-         Kapitel_Titel = str_replace(Kapitel_Titel,"-.*", "")) %>% # Achtung!!! Zerhackt auch richtige Title mit Bindestrick!
-  
+  mutate(Kapitel_Titel = str_replace(Kapitel_Titel,":.*", "")) %>% # Achtung!!! Zerhackt auch richtige Title mit Bindestrick!
+  mutate(Kapitel_Titel = str_replace(Kapitel_Titel,"\"", "")) %>%
+  mutate(Kapitel_Titel = str_replace_all(Kapitel_Titel, "[\r\n]" , "")) %>% # Zeilenumbrüche entfernen
+#  select(title, Kapitel_Titel) %>% view()
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCovid\\b", "Corona")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCorana\\b", "Corona")) %>%
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCorona Update\\b", "Corona")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCoronavirus\\b", "Corona")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfstoff\\b", "Corona")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpf\\b", "Corona")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfung\\b", "Corona")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfen\\b", "Corona")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImpfpflicht\\b", "Corona")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bImmunitätsausweis\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bCorona-Öffnungen\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(Corona).*", "Corona")) %>% # .* Alles was nach dem Wort kommt wird mit eingeschlossen
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\b3 Studien\\b", "Corona")) %>% # LdN185 die 3 Studien gehandeln Corona
+  mutate(Kapitel_Titel =  ifelse(date=="2019-04-05",
+                                 Kapitel_Titel,
+                                 str_replace_all(string = Kapitel_Titel, "^(Impf).*", "Corona"))) %>% # Impfen ist auch in der Folge vom 2019-04-05 Thema. Die nicht in Corona umwandeln
 
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(Immunitätsausweis).*", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bLüften\\b", "Corona")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bTests & Tracing\\b", "Corona")) %>%
 
-
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bFeedback und Korrekturen\\b", "Feedback")) %>%
+  mutate(Kapitel_Titel =  ifelse(date =="2020-05-18",
+                                 str_replace_all(string = Kapitel_Titel, "^(Studie).*", "Corona"),
+                                 Kapitel_Titel)) %>% #Studie behandelt corona Themen
   
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimawandel\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimapaket\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimaerhitzung\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimagipfel\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimaschutz\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlima 1\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlima 2\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimagesetze 2\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimakabinett 2\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimakonferenz\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimakabinett\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  ifelse(date =="2020-06-05",
+                                 str_replace_all(string = Kapitel_Titel, "^(Reisefreiheit).*", "Corona"),
+                                 Kapitel_Titel)) %>% #LdN193 Reisefreiheit nach 1. Weller
+
+  mutate(Kapitel_Titel =  ifelse(date =="2020-05-22",
+                                 str_replace_all(string = Kapitel_Titel, "^(Lufthansa).*", "Corona"),
+                                 Kapitel_Titel)) %>% #LdN191 Lufthansarettung Corona
+
+  
+  mutate(Kapitel_Titel =  ifelse(date >="2020-01-01" & date <= "2020-01-01",
+                                 Kapitel_Titel,
+                                 str_replace_all(string = Kapitel_Titel, "^(Schul).*", "Corona"))) %>% # Nur im Jahr 2020, LdN199 Behandelt kein Corona aber das Thea Schule hat mit Corona zu tuen.
+
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, ".*(Feedback).*", "Feedback")) %>% 
+
+
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(Klima).*", "Klima")) %>% 
   mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bDeutsche Klimapolitik\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimaschutzplan\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimagesetz\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bKlimagesetze\\b", "Klima")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bEEG\\b", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(EEG).*", "Klima")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(Kohle).*", "Klima")) %>% 
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(Fridays).*", "Klima")) %>% 
 
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bFlüchtlingshilfe\\b", "Geflüchtete")) %>%
   
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bJulian Assange\\b", "Geflüchtete")) %>%
-  
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bPolizeigewalt\\b", "Polizei")) %>%
-  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, ".*(Flüchtling).*", "Geflüchtete")) %>% 
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(Polizei).*", "Polizei")) %>% 
 
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bUS\\b", "USA")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bTrump\\b", "USA")) %>%
-  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bTrump vs Twitter\\b", "USA")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(USA).*", "USA")) %>% 
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, ".*(Trump).*", "USA")) %>% 
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bUS-Wahlkampf\\b", "USA")) %>%
 
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bRassimus\\b", "Rassismus")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, ".*(Extremismus).*", "Rassismus")) %>% # Extremimusbericht von Seehofer auch Rassimsu?
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, ".*(Nazi).*", "Rassismus")) %>%
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bWächtersbach\\b", "Rassismus")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bRechtsextremismus\\b","Rassismus")) %>%
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "\\bHanau\\b", "Rassismus")) %>%
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(EU-).*", "EU")) %>% 
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(Europa).*", "EU")) %>% 
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, "^(Leipzig).*", "Leipzig")) %>% 
+
+  
+  
+  mutate(Kapitel_Titel =  str_replace_all(string = Kapitel_Titel, ".*(Hinweis).*|.*(hinweis).*|.*(Hineweis).*", "Hinweis")) %>%
   
   
   group_by(title,Kapitel_Titel,duration,date) %>% 
@@ -297,13 +343,18 @@ LDN_Kapitel <- LDN %>%
   arrange(desc(date)) 
 
 LDN_Kapitel %>%
-  filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview")) %>%
+  filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview","Hinweis")) %>%
   filter(date >= "2020-01-01") %>%
   count(Kapitel_Titel,sort = TRUE) %>%
   view()
 
-LDN_Kapitel %>% 
-  filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview")) %>% 
+a <- LDN %>% filter(date >= "2020-01-01") %>% select(title,date, Kapitel_Titel)
+b <- LDN_Kapitel %>% filter(date >= "2020-01-01") %>% select(title,date, Kapitel_Titel)
+
+
+
+  LDN_Kapitel %>% 
+  filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview","Hinweis","Sponsor")) %>% 
   filter(date >= "2020-01-01") %>%
   count(Kapitel_Titel,sort = TRUE) %>% 
   head(10) %>% 
@@ -345,7 +396,7 @@ LDN_Kapitel %>%
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9}
 LDN_Kapitel %>%   
   filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview")) %>% 
   filter(date >= "2020-01-01") %>%
@@ -360,9 +411,9 @@ LDN_Kapitel %>%
   head(10) %>% 
   ggplot(aes(Kapitel_Titel,Kapitel_länge))+
   geom_col(fill = Farbe_LND_1)+
-  scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800,50400,54000,57600),
-               labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00"),
-               limits = c(0,60000), 
+  scale_y_time(breaks=c(0,3600,7200,10800,14400,18000,21600,25200,28800,32400,36000,39600,43200,46800,50400,54000,57600,61200),
+               labels=c("0","1:00","2:00","3:00","4:00","5:00","6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00"),
+               limits = c(0,64800), 
                expand = c(0,NA))+
   coord_flip()+
   
@@ -395,7 +446,7 @@ LDN_Kapitel %>%
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9, fig.height = 5}
 LDN_Kapitel %>%
   filter(Kapitel_Titel %notin% c("Begrüßung","Verabschiedung","Spezial","Interview","Sponsor","Hinweis","Feedback")) %>%
   cross_by_periods(periods = c("day", "week", "month", "quarter", "year")) %>% 
@@ -408,19 +459,22 @@ LDN_Kapitel %>%
   filter(n >= 3) %>% 
   ungroup() %>% 
   mutate(Kapitel_Titel = fct_reorder(Kapitel_Titel,n)) %>% 
-  ggplot(aes(date,Kapitel_Titel,size = Kapitel_länge, alpha = Kapitel_länge))+
+  group_by(date) %>% 
+  mutate(relativelänge = Kapitel_länge / sum(Kapitel_länge)) %>% 
+  ungroup() %>% 
+  ggplot(aes(date,Kapitel_Titel,size = relativelänge, alpha = Kapitel_länge))+
   geom_point(color = Farbe_LND_1)+
-  scale_size_continuous(range = c(2, 16))+
+  scale_size_continuous(range = c(1, 16))+
   scale_alpha_continuous(range = c(1, 1))+
   scale_x_date(date_labels = "%b",date_breaks = "1 months")+
   theme(
     legend.position = "none")+
   
     labs(
-    title = "Top 6 Kapitel in 2020 - Pro Monat",
+    title = "Top 7 Kapitel in 2020 - Pro Monat",
        subtitle = 
-        paste("Die Dicke der Kriese beschreibt die Länge der Themen pro Monat"),
-    caption = "*Ohne Spezial-Folgen ",
+        paste("Die Dicke der Kreise beschreibt die relative Länge der Themen pro Monat"),
+    caption = "*Ohne Spezial-Folgen **Ohne die Kapitel: Begrüßung, Verabschiedung, Interview, Sponsor, Hinweis, Feedback ",
        x = "",
        y = "")+ 
   
@@ -508,7 +562,7 @@ LDN_Intervew_Geschlecht <- rbind(Fr,Mä)
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig.height = 3, fig.width = 8}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE,fig.height = 3, fig.width = 9}
 
 LDN_InterviewPartner <- LDN_Interview %>% 
   filter(Interview == 1,
@@ -564,7 +618,7 @@ LDN_Interview %>%
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9}
 my.max <- function(x) ifelse( !all(is.na(x)), max(x, na.rm=T), 0)
 
 LDN_Interview %>%
@@ -607,7 +661,7 @@ LDN_Interview %>%
 ```
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 8}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.width = 9}
 LDN_Quellen <- LDN %>%
   filter(date >= "2020-01-01",
          Folge_Art == "Folge") %>%
@@ -781,6 +835,6 @@ LDN_Jahre %>%
 
 
 ```{r include=FALSE}
-#beepr::beep()
+beepr::beep()
 ```
 
