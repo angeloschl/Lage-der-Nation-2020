@@ -40,39 +40,39 @@ library(ggplot2)
 ```
 
 # Einleitung
-In den folgenden Abbildungen habe ich das Podcastjahr 2020 der Lage der Nation konzentriert auf ein paar Aspekte veranschaulicht. Dabei habe ich zuerst kein konkretes Ziel verfolgt, sondern wollte die Zeit des Lockdowns etwas füllen. Herausgekommen sind aber ein paar spannende Erkenntnisse. Zum Beispiel, dass ich fast drei volle Tage in diesem Jahr die Lage gehört habe und dabei das Thema Corona um die 17 Stunden eingenommen hat. Oder das die Top-Quellen Süddeutsche, Spiegel und Twitter sind.
+In den folgenden Abbildungen habe ich das Podcastjahr 2020 der Lage der Nation konzentriert auf ein paar Aspekte veranschaulicht. Dabei habe ich zuerst kein konkretes Ziel verfolgt, sondern wollte die Zeit des Lockdowns etwas füllen. Herausgekommen sind aber ein paar spannende Erkenntnisse. Zum Beispiel, dass ich fast drei volle Tage in diesem Jahr die Lage gehört habe und dabei das Thema Corona um die 17 Stunden eingenommen hat. Oder das die Top-Quellen für die Folgen Süddeutsche, Spiegel und Twitter waren.
 
 
 Als Datengrundlage habe ich den öffentlichen RSS-Feed der Lage der Nation genutzt (https://feeds.lagedernation.org/feeds/ldn-mp3.xml). Ich habe also nur Metadaten ausgewertet und bin nicht inhaltlich die einzelnen Folgen durchgegangen.
 
-Wichtig ist mir zu sagen, dass ich keine Bewertung wie richtig - falsch oder zu viel - zu wenig mit dieser Auswertung machen möchte, sondern lediglich beschreiben will. Da ich es aber so interessant finde, möchte ich es gerne, auch in Rücksprache mit dem Lage-Team, hier im Forum teilen.
+Wichtig ist mir zu sagen, dass ich keine Bewertung wie *richtig - falsch* oder *zu viel - zu wenig* mit diesem Post machen möchte, sondern lediglich die Ergebnisse zeigen möchte. Da ich es aber so interessant finde, möchte ich es gerne, auch in Rücksprache mit dem Lage-Team, hier im Forum teilen.
 
-Ich gespannt, was ihr dazu sagt, ob ihr noch weiter Ideen für Abbildungen und Auswertungen habt und ob euch Fehler auffallen, die ich nicht gefunden habe. 
-Den Code habe ich bei GitHub geteilt und könnt ihr hier einsehen: https://github.com/angeloschl/Lage-der-Nation-2020. Genutzt habe ich die Programmiersprache R und RMarkdown.
+Ich bin gespannt, was ihr dazu sagt, ob ihr noch weiter Ideen für Abbildungen und Auswertungen habt und ob euch Fehler auffallen, die ich nicht gefunden habe. 
+Den Code habe ich bei GitHub geteilt und könnt ihr hier einsehen: https://github.com/angeloschl/Lage-der-Nation-2020. Genutzt habe ich die Programmiersprache R in Kombination mit RMarkdown.
 
-Ich habe mir die größte Mühe gemacht sauber zu arbeiten. Da ich programmieren und R aber nie für solche Zwecke gelernt habe und auch nur gelegentlich auf eine anderen Art und Weise im beruflichen Kontext nutze, bitte ich um Rücksicht bei Fehlern und nicht Einhaltung fundamentaler Regeln (sollte es diese Geben). Es ist mein erstes Projekt dieser Art und Größe. Ich wollte es nutzen, um meine Fertigkeiten etwas zu verbessern, neue Dinge zu lernen und einfach ein bisschen Spaß dabei zu haben. Über Feedback und Anregungen freue ich mich sehr.
+Ich habe mir die größte Mühe gemacht sauber zu arbeiten. Da ich programmieren und R aber nie für solche Zwecke gelernt habe und auch nur für andere Zwecke im beruflichen Kontext nutze, bitte ich um Rücksicht bei Fehlern und nicht Einhaltung fundamentaler Regeln (sollte es diese Geben). Es ist mein erstes Projekt dieser Art und Größe. Ich wollte es nutzen, um meine Fertigkeiten etwas zu verbessern, neue Dinge zu lernen und einfach ein bisschen Spaß dabei zu haben. Über Feedback und Anregungen freue ich mich sehr.
 
 Liebe Grüß und schöne Feiertage <p>
 Angelo 
 
 
-# Datenaufbereitung
+# Weitere Informationen zur Datenaufbereitung
 Im folgen möchte ich euch kurz erklären, wie ich an ein paar stellen die Daten aufbereitet und zusammengefasst habe
 
 ## Kapitel - Zusammenfassungen
-Um die die Kapitel zusammen zu fassen, habe ich aus dem RSS-Feed die Kapitel pro folge gelesen und verkürzt. Ich habe nur den ersten Teil bis zum Doppelpunkt verwenden. <p>
+Um die Kapitel zusammenzufassen, habe ich aus dem RSS-Feed die Kapitel pro Folge gelesen und verkürzt. Ich habe nur den ersten Teil bis zum Doppelpunkt verwenden. <p>
 Beispiel: "Corona: Zahlen und keine Entwarnung" wird nur zu "Corona".
-Wurde dann ein Hauptthema (Bsp.: Corona) mit unterschiedlichen Unterthemen (Bsp.: "Corona: Zahlen und keine Entwarnung", "Corona: Impfstoff in der EU zugelassen") mehrfach in einer Folge besprochen, wurde diese zu einer Einheit zusammen gefasst. Somit wird das Kapitel auch nur einmal pro Folge gezählt und die Länge der Unterthemen summiert.
+Wurde dann ein Hauptthema (Bsp.: Corona) mit unterschiedlichen Unterthemen (Bsp.: "Corona: Zahlen und keine Entwarnung" & "Corona: Impfstoff in der EU zugelassen") mehrfach in einer Folge besprochen, wurden diese zu einer Einheit zusammen gefasst (in dem Fall "Corona"). Somit wird das Kapitel auch nur einmal pro Folge gezählt und die Länge der Unterthemen summiert.
 
-Darüber hinaus habe ich thematische gleich Kapitel, die aber unterschiedlich benannt, manuell zusammen gefasst. Ich möchte es hier am bespiel Corona zeigen. Alle anderen Umbenennungen könnt ihr im Code bei GitHub nachschauen. 
+Darüber hinaus habe ich thematische gleiche Kapitel, die aber unterschiedlich benannt wurden, manuell zusammen gefasst. Ich möchte es hier am Beispiel Corona zeigen. Alle anderen Umbenennungen könnt ihr im Code bei GitHub nachschauen. 
 
-Zu **Corona** wurden folgenden Kapitel umbenannt:
+Zu **"Corona"** wurden folgenden Kapitel umbenannt:
 
-- Covid
+- Corona (Alle die das Wort Corona in sich haben)
+- Covid (Alle die das Wort Covid in sich haben)
 - Corana
 - Corona Update
 - Corona-Öffnungen
-- Corona (Alle die das Wort Corona in sich haben)
 - Impf (Alle die mit das Wort Impf in sich haben)
 - Immunitätsausweis (Alle die das Wort Immunitätsausweis in sich haben)
 - Lüften
@@ -82,11 +82,12 @@ Zu **Corona** wurden folgenden Kapitel umbenannt:
 - Lufthansa (Alle die das Wort Lufthansa in sich haben)
 - Schul (Alle die das Wort Schule in sich haben)
 
-Ich hab die Entscheidungen erst einmal so getroffen. Ich denke, bei ein Paar "Umbennenungen" gibt es bestimmt verschiedene Ansichten. 
+Ich hab die Entscheidungen erst einmal so getroffen. Ich denke, bei ein Paar "Umbenennungen" gibt es bestimmt verschiedene Ansichten. 
 
 
 ## Quellen - Zusammenfassungen
-Das Selbe Prozedere wie bei den Kapiteln wurden ebenfalls für die Quellen gemacht. Funfact, die Lage hat 11 verschieden Formulierungen für Spiegel Online gefunden. Alle weiteren Infos bitte auch im Code bei GitHub nach voll ziehen.
+Dasselbe Prozedere habe ich ebenfalls für die Quellen gemacht.
+Funfact, die Lage hat 11 verschieden Formulierungen für Spiegel Online gefunden. Alle weiteren Informationen bitte auch im Code bei GitHub nach voll ziehen.
 
 
 # Abbildungen
