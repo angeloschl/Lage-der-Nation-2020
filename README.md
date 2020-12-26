@@ -7,25 +7,23 @@ Ein Paar Visualisierungen zum Podcastjahr 2020 der Lage der Nation.
 Als Datenquelle wurde der RRS Feed genutzt.
 
 
-<<<<<<< HEAD
-![](main/plots/Anzahl_der_Folgen.png)
-
-![](main/plots/Interviewgäste_in_2020.png)
-=======
 ![](plots/Anzahl_der_Folgen.png)
 
 ![](plots/Interviewgäste_in_2020.png)
->>>>>>> c0fca26be6897707bcff5a5ff1ee6f3fb529f368
 
-![](main/plots/Länge_der_Folgen_in_2020.png)
+![](plots/Anzahl_der_Folgen.png)
 
-![](main/plots/Top_8_Kapitel_in_2020-Pro_Monat.png)
+![](plots/Interviewgäste_in_2020.png)
 
-![](main/plots/Top_10_Kapitel_in_2020-Häufigkeit.png)
+![](plots/Länge_der_Folgen_in_2020.png)
 
-![](main/plots/Top_10_Kapitel_in_2020-Länge.png)
+![](plots/Top_8_Kapitel_in_2020-Pro_Monat.png)
 
-![](main/plots/Top_10_Quellen_2020-Häufigkeit.png)
+![](plots/Top_10_Kapitel_in_2020-Häufigkeit.png)
 
-![](main/plots/Veröffentlichung_nach_Wochentagen_in_2020.png)
+![](plots/Top_10_Kapitel_in_2020-Länge.png)
+
+![](plots/Top_10_Quellen_2020-Häufigkeit.png)
+
+![](plots/Veröffentlichung_nach_Wochentagen_in_2020.png)
 
