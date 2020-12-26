@@ -40,7 +40,7 @@ library(ggplot2)
 ```
 
 # Einleitung
-In den folgenden Abbildungen habe ich das Podcastjahr 2020 der Lage der Nation konzentriert auf ein paar Aspekte veranschaulicht. Dabei habe ich zuerst kein konkretes Ziel verfolgt, sondern wollte die Zeit des Lockdowns etwas füllen. Herausgekommen sind aber ein paar spannende Erkenntnisse. Zum Beispiel, dass ich fast drei volle Tage in diesem Jahr die Lage gehört habe und dabei das Thema Corona um die 16 Stunden eingenommen hat. Oder das die Top-Quellen Süddeutsche, Spiegel und Twitter sind.
+In den folgenden Abbildungen habe ich das Podcastjahr 2020 der Lage der Nation konzentriert auf ein paar Aspekte veranschaulicht. Dabei habe ich zuerst kein konkretes Ziel verfolgt, sondern wollte die Zeit des Lockdowns etwas füllen. Herausgekommen sind aber ein paar spannende Erkenntnisse. Zum Beispiel, dass ich fast drei volle Tage in diesem Jahr die Lage gehört habe und dabei das Thema Corona um die 17 Stunden eingenommen hat. Oder das die Top-Quellen Süddeutsche, Spiegel und Twitter sind.
 
 
 Als Datengrundlage habe ich den öffentlichen RSS-Feed der Lage der Nation genutzt (https://feeds.lagedernation.org/feeds/ldn-mp3.xml). Ich habe also nur Metadaten ausgewertet und bin nicht inhaltlich die einzelnen Folgen durchgegangen.
@@ -52,7 +52,45 @@ Den Code habe ich bei GitHub geteilt und könnt ihr hier einsehen: https://githu
 
 Ich habe mir die größte Mühe gemacht sauber zu arbeiten. Da ich programmieren und R aber nie für solche Zwecke gelernt habe und auch nur gelegentlich auf eine anderen Art und Weise im beruflichen Kontext nutze, bitte ich um Rücksicht bei Fehlern und nicht Einhaltung fundamentaler Regeln (sollte es diese Geben). Es ist mein erstes Projekt dieser Art und Größe. Ich wollte es nutzen, um meine Fertigkeiten etwas zu verbessern, neue Dinge zu lernen und einfach ein bisschen Spaß dabei zu haben. Über Feedback und Anregungen freue ich mich sehr.
 
-# Vereinfachung
+Liebe Grüß und schöne Feiertage <p>
+Angelo 
+
+
+# Datenaufbereitung
+Im folgen möchte ich euch kurz erklären, wie ich an ein paar stellen die Daten aufbereitet und zusammengefasst habe
+
+## Kapitel - Zusammenfassungen
+Um die die Kapitel zusammen zu fassen, habe ich aus dem RSS-Feed die Kapitel pro folge gelesen und verkürzt. Ich habe nur den ersten Teil bis zum Doppelpunkt verwenden. <p>
+Beispiel: "Corona: Zahlen und keine Entwarnung" wird nur zu "Corona".
+Wurde dann ein Hauptthema (Bsp.: Corona) mit unterschiedlichen Unterthemen (Bsp.: "Corona: Zahlen und keine Entwarnung", "Corona: Impfstoff in der EU zugelassen") mehrfach in einer Folge besprochen, wurde diese zu einer Einheit zusammen gefasst. Somit wird das Kapitel auch nur einmal pro Folge gezählt und die Länge der Unterthemen summiert.
+
+Darüber hinaus habe ich thematische gleich Kapitel, die aber unterschiedlich benannt, manuell zusammen gefasst. Ich möchte es hier am bespiel Corona zeigen. Alle anderen Umbenennungen könnt ihr im Code bei GitHub nachschauen. 
+
+Zu **Corona** wurden folgenden Kapitel umbenannt:
+
+- Covid
+- Corana
+- Corona Update
+- Corona-Öffnungen
+- Corona (Alle die das Wort Corona in sich haben)
+- Impf (Alle die mit das Wort Impf in sich haben)
+- Immunitätsausweis (Alle die das Wort Immunitätsausweis in sich haben)
+- Lüften
+- Tests & Tracing
+- Studie (Alle die das Wort Studie in sich haben)
+- Reisefreiheit (Alle die das Wort Reisefreiheit in sich haben)
+- Lufthansa (Alle die das Wort Lufthansa in sich haben)
+- Schul (Alle die das Wort Schule in sich haben)
+
+Ich hab die Entscheidungen erst einmal so getroffen. Ich denke, bei ein Paar "Umbennenungen" gibt es bestimmt verschiedene Ansichten. 
+
+
+## Quellen - Zusammenfassungen
+Das Selbe Prozedere wie bei den Kapiteln wurden ebenfalls für die Quellen gemacht. Funfact, die Lage hat 11 verschieden Formulierungen für Spiegel Online gefunden. Alle weiteren Infos bitte auch im Code bei GitHub nach voll ziehen.
+
+
+# Abbildungen
+Hier die Abbildungen. 
 
 
 
@@ -190,7 +228,7 @@ LDN_Jahr %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
-ggsave("plots/Anzahl der Folgen.png",  width = 9, height = 3)
+ggsave("plots/Anzahl_der_Folgen.png",  width = 9, height = 3)
 
 ```
 
@@ -259,17 +297,12 @@ LDN %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
-ggsave("plots/Länge der Folgen in 2020.png",  width = 9, height = 3)
+ggsave("plots/Laenge_der_Folgen_in_2020.png",  width = 9, height = 3)
 
 
 #font_add("LemonMilk",regular = "LemonMilk.otf",bold = "LemonMilkbold.otf",italic = "LemonMilkitalic.otf", bolditalic = "LemonMilkbolditalic.otf")
 #font_add("Futura2",regular = "futura light bt.ttf",bold = "Futura Bold font.ttf",italic = "Futura Light Italic font.ttf", bolditalic = "Futura Heavy Italic font.ttf")
 ```
-
-## Top 10 Kapitel in 2020 - Häufigkeit
-
-Da die Kapitel oft unterschiedlich genannt wurden, aber die Inhalte gleich sind, wurden sie logisch zusammengefasst. <p>Hier am Beispiel das Kapitel <b>Corona</b> =
-Covid, Corana, Corona Update, Coronavirus, Impfstoff, Impfung, Impfen, Impfpflicht, Immunitätsausweis <p>
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
@@ -402,7 +435,7 @@ b <- LDN_Kapitel %>% filter(date >= "2020-01-01") %>% select(title,date, Kapitel
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
-ggsave("plots/Top 10 Kapitel in 2020 - Häufigkeit.png",  width = 9, height = 5)
+ggsave("plots/Top_10_Kapitel_in_2020-Haeufigkeit.png",  width = 9, height = 5)
 
 ```
 
@@ -455,7 +488,7 @@ LDN_Kapitel %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
-ggsave("plots/Top 10 Kapitel in 2020 - Länge.png",  width = 9, height = 5)
+ggsave("plots/Top_10_Kapitel_in_2020-Laenge.png",  width = 9, height = 5)
 
 
 ```
@@ -514,7 +547,7 @@ LDN_Kapitel %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
-ggsave("plots/Top 8 Kapitel in 2020 - Pro Monat.png",  width = 9, height = 5)
+ggsave("plots/Top_8_Kapitel_in_2020-Pro_Monat.png",  width = 9, height = 5)
 
 ```
 
@@ -631,7 +664,7 @@ LDN_Interview %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
-ggsave("plots/Interviewgäste in 2020.png",  width = 9, height = 3)
+ggsave("plots/Interviewgaeste_in_2020.png",  width = 9, height = 3)
 
 
 ```
@@ -677,7 +710,7 @@ LDN_Interview %>%
   theme(plot.title = element_markdown(lineheight = 1.1),
         plot.subtitle = element_markdown(lineheight = 1.1))
 
-ggsave("plots/Veröffentlichung nach Wochentagen in 2020.png",  width = 9, height = 5)
+ggsave("plots/Veroeffentlichung_nach_Wochentagen_in_2020.png",  width = 9, height = 5)
 
   
 ```
@@ -807,7 +840,7 @@ LDN_Quellen_Plot %>%
     plot.title = element_markdown(lineheight = 1.1),
     plot.subtitle = element_markdown(lineheight = 1.1))
 
-ggsave("plots/Top 10 Quellen 2020 - Häufigkeit.png",  width = 9, height = 5)
+ggsave("plots/Top_10_Quellen_2020-Haeufigkeit.png",  width = 9, height = 5)
 
 ```
 
