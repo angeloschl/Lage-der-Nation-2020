@@ -7,9 +7,15 @@ Ein Paar Visualisierungen zum Podcastjahr 2020 der Lage der Nation.
 Als Datenquelle wurde der RRS Feed genutzt.
 
 
+<<<<<<< HEAD
 ![](main/plots/Anzahl_der_Folgen.png)
 
 ![](main/plots/Interviewgäste_in_2020.png)
+=======
+![](plots/Anzahl_der_Folgen.png)
+
+![](plots/Interviewgäste_in_2020.png)
+>>>>>>> c0fca26be6897707bcff5a5ff1ee6f3fb529f368
 
 ![](main/plots/Länge_der_Folgen_in_2020.png)
 
