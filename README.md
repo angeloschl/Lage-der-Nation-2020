@@ -7,4 +7,8 @@ Ein Paar Visualisierungen zum Podcastjahr 2020 der Lage der Nation.
 Als Datenquelle wurde der RRS Feed genutzt.
 
 
-![](plots/Anzahl_der_Folgen.png)
+![Juppis](./plots/Anzahl_der_Folgen.png)
+
+
+
+![](plots/)
