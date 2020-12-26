@@ -9,17 +9,17 @@ Als Datenquelle wurde der RRS Feed genutzt.
 
 ![](plots/Anzahl_der_Folgen.png)
 
-![](plots/Interviewgäste_in_2020.png)
+![](plots/Interviewgaeste_in_2020.png)
 
-![](plots/Länge_der_Folgen_in_2020.png)
+![](plots/Laenge_der_Folgen_in_2020.png)
 
 ![](plots/Top_8_Kapitel_in_2020-Pro_Monat.png)
 
-![](plots/Top_10_Kapitel_in_2020-Häufigkeit.png)
+![](plots/Top_10_Kapitel_in_2020-Haeufigkeit.png)
 
-![](plots/Top_10_Kapitel_in_2020-Länge.png)
+![](plots/Top_10_Kapitel_in_2020-Laenge.png)
 
-![](plots/Top_10_Quellen_2020-Häufigkeit.png)
+![](plots/Top_10_Quellen_2020-Haeufigkeit.png)
 
-![](plots/Veröffentlichung_nach_Wochentagen_in_2020.png)
+![](plots/Veroeffentlichung_nach_Wochentagen_in_2020.png)
 
