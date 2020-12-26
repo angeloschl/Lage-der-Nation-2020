@@ -23,3 +23,4 @@ Als Datenquelle wurde der RRS Feed genutzt.
 
 ![](plots/Veroeffentlichung_nach_Wochentagen_in_2020.png)
 
+
